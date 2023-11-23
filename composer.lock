@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deaa50e03c4d50d349e7592f470aa173",
+    "content-hash": "cce0a72d37d1a3ed567aed270bf72697",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1208,6 +1208,65 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "laravel-views/laravel-views",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gustavinho/laravel-views.git",
+                "reference": "05cca77ccfe289797a859c2de68eacd565fdcc2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Gustavinho/laravel-views/zipball/05cca77ccfe289797a859c2de68eacd565fdcc2e",
+                "reference": "05cca77ccfe289797a859c2de68eacd565fdcc2e",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "2.*"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.1",
+                "nunomaduro/larastan": "^0.7.6",
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "9.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelViews\\LaravelViewsServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelViews": "LaravelViews\\Facades\\LaravelViews",
+                        "Variants": "LaravelViews\\Facades\\Variants",
+                        "UI": "LaravelViews\\Facades\\UI"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelViews\\": "src",
+                    "LaravelViews\\Test\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gustavo Martinez",
+                    "email": "gustavinho.martinez@gmail.com"
+                }
+            ],
+            "description": "Laravel package to create beautiful common views like tables using only PHP code",
+            "support": {
+                "issues": "https://github.com/Gustavinho/laravel-views/issues",
+                "source": "https://github.com/Gustavinho/laravel-views/tree/v2.4.1"
+            },
+            "time": "2023-01-02T23:18:22+00:00"
         },
         {
             "name": "laravel/fortify",

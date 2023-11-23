@@ -8,20 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <ul>
-                    @foreach ($users as $user)
-                    <li>
-                        {{ $user->name }}
-                        @if ($user->roles->count() > 0)
-                        [
-                        @foreach ($user->roles as $role)
-                        {{ $role->name }}
-                        @endforeach
-                        ]
-                        @endif
-                    </li>
-                    @endforeach
-                </ul>
+                <livewire:users.users-table-view />
             </div>
         </div>
     </div>
