@@ -12,7 +12,9 @@ class UsersTableView extends TableView
      * Sets a model class to get the initial data
      */
     protected $model = User::class;
-
+    
+    public $searchBy = ['name', 'email', 'roles.name'];
+    protected $paginate = 5;
     /**
      * Sets the headers of the table as you want to be displayed
      *
