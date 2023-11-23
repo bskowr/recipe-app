@@ -22,7 +22,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'users.change_role']);
         
         /* przypisanie uprawnien do roli admin */
-        $userRole = Role::findByName(config('roles.auth.admin'));
+        $userRole = Role::findByName(config('auth.roles.admin'));
         $userRole->givePermissionTo('users.index');
         $userRole->givePermissionTo('users.store');
         $userRole->givePermissionTo('users.destroy');

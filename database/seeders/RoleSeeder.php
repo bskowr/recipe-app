@@ -16,6 +16,6 @@ class RoleSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
         Role::create(['name'=>config('auth.roles.admin')]);
         Role::create(['name'=>config('auth.roles.editor')]);
-        Role::create(['name'=>config('auth.roles.user')]);
+        Role::create(['name'=>config('auth.roles.reader')]);
     }
 }
