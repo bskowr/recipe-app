@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
-use App\Http\Livewire\Users\Filters\RoleFilter;
 use App\Models\User;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Users\Filters\RoleFilter;
+use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
+use App\Http\Livewire\Users\Actions\AssignAdminRoleAction;
+use App\Http\Livewire\Users\Actions\RemoveAdminRoleAction;
+use App\Http\Livewire\Users\Actions\AssignEditorRoleAction;
+use App\Http\Livewire\Users\Actions\RemoveEditorRoleAction;
 
 class UsersTableView extends TableView
 {
@@ -68,6 +72,15 @@ class UsersTableView extends TableView
         return [
             new EmailVerifiedFilter,
             new RoleFilter
+        ];
+    }
+
+    protected function actionsByRow(){
+        return [
+            new AssignAdminRoleAction,
+            new RemoveAdminRoleAction,
+            new AssignEditorRoleAction,
+            new RemoveEditorRoleAction,
         ];
     }
 }

@@ -60,4 +60,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole(config('auth.roles.admin'));
+    }
+    public function isEditor(): bool
+    {
+        return $this->hasRole(config('auth.roles.editor'));
+    }
 }
