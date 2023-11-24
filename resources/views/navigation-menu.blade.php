@@ -13,8 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('translation.navigation.dashboard') }}
                     </x-nav-link>
+                    @can('users.index')
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                        {{ __('translation.navigation.users') }}
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -142,6 +147,11 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @can('users.index')
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                {{ __('translation.navigation.users') }}
+            </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
