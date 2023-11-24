@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AssignEditorRoleAction extends Action
 {
     public $title = '';
-    public $icon = "shield";
+    public $icon = "edit-3";
 
     public function __construct()
     {
@@ -18,13 +18,16 @@ class AssignEditorRoleAction extends Action
 
     public function handle($model, View $view)
     {
+        foreach ($model->roles as $role){
+            $model->removeRole($role);
+        }
         $model->assignRole(config('auth.roles.editor'));
         $this->success(__('users.messages.successes.editor_role_assigned'));
     }
 
     public function renderIf($model, View $view)
     {
-        return Auth::user()->isEditor()
+        return Auth::user()->isAdmin()
             && !$model->hasRole(config('auth.roles.editor'));
     }
 }

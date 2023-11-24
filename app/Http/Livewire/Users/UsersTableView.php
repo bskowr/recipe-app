@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\Users\Filters\RoleFilter;
 use App\Http\Livewire\Users\Filters\EmailVerifiedFilter;
 use App\Http\Livewire\Users\Actions\AssignAdminRoleAction;
-use App\Http\Livewire\Users\Actions\RemoveAdminRoleAction;
 use App\Http\Livewire\Users\Actions\AssignEditorRoleAction;
-use App\Http\Livewire\Users\Actions\RemoveEditorRoleAction;
+use App\Http\Livewire\Users\Actions\AssignReaderRoleAction;
 
 class UsersTableView extends TableView
 {
@@ -78,9 +77,8 @@ class UsersTableView extends TableView
     protected function actionsByRow(){
         return [
             new AssignAdminRoleAction,
-            new RemoveAdminRoleAction,
             new AssignEditorRoleAction,
-            new RemoveEditorRoleAction,
+            new AssignReaderRoleAction
         ];
     }
 }

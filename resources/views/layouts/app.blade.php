@@ -16,6 +16,7 @@
 
         <!-- Styles -->
         @livewireStyles
+        @laravelViewsStyles(laravel-views,tailwindcss,livewire)
     </head>
     <body class="font-sans antialiased">
         <x-banner />
@@ -39,7 +40,7 @@
         </div>
 
         @stack('modals')
-
         @livewireScripts
+        @laravelViewsScripts(laravel-views)
     </body>
 </html>
