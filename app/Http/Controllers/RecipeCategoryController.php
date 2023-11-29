@@ -14,7 +14,7 @@ class RecipeCategoryController extends Controller
      */
     public function create(){
         return view(
-            'categories.form'
+            'recipe_categories.form'
         );
     }
 
