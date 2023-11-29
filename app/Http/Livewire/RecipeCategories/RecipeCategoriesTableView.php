@@ -15,6 +15,10 @@ class RecipeCategoriesTableView extends TableView
      * Sets a model class to get the initial data
      */
     protected $model = RecipeCategory::class;
+    public $searchBy = [
+        'name'
+    ];
+    protected $paginate = 25;
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -46,7 +50,8 @@ class RecipeCategoriesTableView extends TableView
         ];
     }
 
-    protected function actionsByRow(){
+    protected function actionsByRow()
+    {
         return [
             new EditRecipeCategoryAction(
                 'recipe_categories.edit',

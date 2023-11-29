@@ -28,7 +28,7 @@ class RecipeCategoryController extends Controller
         return view(
             'recipe_categories.form',
             [
-                'recipe_category' => $recipeCategory,
+                'recipeCategory' => $recipeCategory,
             ]
         );
     }

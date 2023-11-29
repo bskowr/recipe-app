@@ -15,11 +15,11 @@ class RecipeCategoryForm extends Component
 
     public function rules(){
         return [
-            'recipe_category.name' => [
+            'recipeCategory.name' => [
                 'required',
                 'string',
                 'min:3',
-                'unique:recipe_categories,name'.($this->editMode ? (','+$this->recipeCategory->id) : '')
+                'unique:recipe_categories,name'.($this->editMode ? (','.$this->recipeCategory->id) : '')
             ]
         ];
     }
