@@ -2,7 +2,6 @@
 namespace App\Http\Livewire\RecipeCategories\Actions;
 
 use LaravelViews\Views\View;
-use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 
 class EditRecipeCategoryAction extends RedirectAction

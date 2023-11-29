@@ -32,4 +32,12 @@ class RecipeCategoryController extends Controller
             ]
         );
     }
+    public function index(){
+        return view(
+            'recipe_categories.index',
+            [
+                'recipe_categories' => RecipeCategory::all()
+            ]
+        );
+    }
 }
