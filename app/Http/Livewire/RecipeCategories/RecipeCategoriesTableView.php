@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\RecipeCategories;
 
+use WireUi\Traits\Actions;
 use App\Models\RecipeCategory;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
@@ -9,6 +10,7 @@ use App\Http\Livewire\RecipeCategories\Actions\EditRecipeCategoryAction;
 
 class RecipeCategoriesTableView extends TableView
 {
+    use Actions;
     /**
      * Sets a model class to get the initial data
      */

@@ -5,6 +5,9 @@ return [
         'successes' => [
         ],
     ],
+    'labels' => [
+        'create_form_title' => 'Utwórz kategorię przepisu',
+    ],
     'actions' => [
         'edit' => 'Edytuj kategorię przepisów',
     ],

@@ -3,6 +3,9 @@
 return [
     'yes' => 'Tak',
     'no' => 'Nie',
+    'back' => 'Powrót',
+    'save' => 'Zapisz',
+    'enter' => 'Wprowadź wartość',
     'attributes' => [
         'created_at' => 'Utworzono',
         'updated_at' => 'Zaktualizowano',

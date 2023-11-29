@@ -8,7 +8,11 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <livewire.recipe-categories.recipe-category-form />
+                @if (isset($recipeCategory))
+                    <livewire:recipe-categories.recipe-category-form :recipeCategory="$recipeCategory" :editMode="true" />
+                @else
+                    <livewire:recipe-categories.recipe-category-form :editMode="false" />
+                @endif
             </div>
         </div>
     </div>

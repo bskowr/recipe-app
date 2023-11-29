@@ -17,9 +17,11 @@
         <!-- Styles -->
         @livewireStyles
         @laravelViewsStyles(laravel-views,tailwindcss,livewire)
+        @wireUiScripts
     </head>
     <body class="font-sans antialiased">
         <x-banner />
+        <x-notifications />
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
@@ -42,5 +44,6 @@
         @stack('modals')
         @livewireScripts
         @laravelViewsScripts(laravel-views)
+        @wireUiStyles
     </body>
 </html>
