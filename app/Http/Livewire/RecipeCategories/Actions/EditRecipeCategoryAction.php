@@ -1,33 +1,25 @@
 <?php
-namespace App\Http\Livewire\Users\Actions;
+namespace App\Http\Livewire\RecipeCategories\Actions;
 
 use LaravelViews\Views\View;
-use LaravelViews\Actions\Action;
 use Illuminate\Support\Facades\Auth;
+use LaravelViews\Actions\RedirectAction;
 
-class AssignReaderRoleAction extends Action
+class EditRecipeCategoryAction extends RedirectAction
 {
-    public $title = '';
-    public $icon = "book";
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->title = __('users.actions.assign_reader_role');
-    }
 
-    public function handle($model, View $view)
+    public function __construct(
+        string $to,
+        string $title,
+        string $icon = "edit"
+    )
     {
-        foreach ($model->roles as $role){
-            $model->removeRole($role);
-        }
-        $model->assignRole(config('auth.roles.reader'));
-        $this->success(__('users.messages.successes.reader_role_assigned'));
+        parent::__construct($to, $title, $icon);
     }
 
     public function renderIf($model, View $view)
     {
-        return Auth::user()->isAdmin()
-            && !$model->hasRole(config('auth.roles.reader'));
+        return $model->deleted_at === null;
     }
 }
