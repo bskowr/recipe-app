@@ -26,7 +26,7 @@ class RecipeCategoryController extends Controller
      */
     public function edit(RecipeCategory $recipeCategory){
         return view(
-            'categories.form',
+            'recipe_categories.form',
             [
                 'recipe_category' => $recipeCategory,
             ]
