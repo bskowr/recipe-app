@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\RecipeCategories;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 use App\Models\RecipeCategory;
@@ -9,7 +10,7 @@ use App\Models\RecipeCategory;
 class RecipeCategoryForm extends Component
 {
     use Actions;
-
+    use AuthorizesRequests;
     public RecipeCategory $recipeCategory;
     public Bool $editMode;
 
@@ -40,6 +41,11 @@ class RecipeCategoryForm extends Component
     }
 
     public function save(){
+        if($this->editMode){
+            $this->authorize('update', $this->recipeCategory);
+        } else {
+            $this->authorize('create', RecipeCategory::class);
+        }
         $this->validate();
         $this->recipeCategory->save();
         $this->notification()->success(

@@ -12,7 +12,23 @@ class RecipeCategoryController extends Controller
      *
      * @return
      */
+    public function index(){
+        $this->authorize('viewAny', RecipeCategory::class);
+        return view(
+            'recipe_categories.index',
+            [
+                'recipe_categories' => RecipeCategory::all()
+            ]
+        );
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return
+     */
     public function create(){
+        $this->authorize('create', RecipeCategory::class);
         return view(
             'recipe_categories.form'
         );
@@ -25,18 +41,11 @@ class RecipeCategoryController extends Controller
      * @return
      */
     public function edit(RecipeCategory $recipeCategory){
+        $this->authorize('update', $recipeCategory);
         return view(
             'recipe_categories.form',
             [
                 'recipeCategory' => $recipeCategory,
-            ]
-        );
-    }
-    public function index(){
-        return view(
-            'recipe_categories.index',
-            [
-                'recipe_categories' => RecipeCategory::all()
             ]
         );
     }

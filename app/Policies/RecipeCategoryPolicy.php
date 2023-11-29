@@ -13,15 +13,7 @@ class RecipeCategoryPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, RecipeCategory $recipeCategory): bool
-    {
-        //
+        return $user->can('recipe_categories.index');
     }
 
     /**
@@ -29,7 +21,7 @@ class RecipeCategoryPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->can('recipe_categories.manage');
     }
 
     /**
@@ -37,7 +29,7 @@ class RecipeCategoryPolicy
      */
     public function update(User $user, RecipeCategory $recipeCategory): bool
     {
-        //
+        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.manage');
     }
 
     /**
@@ -45,7 +37,7 @@ class RecipeCategoryPolicy
      */
     public function delete(User $user, RecipeCategory $recipeCategory): bool
     {
-        //
+        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.manage');
     }
 
     /**
@@ -53,7 +45,7 @@ class RecipeCategoryPolicy
      */
     public function restore(User $user, RecipeCategory $recipeCategory): bool
     {
-        //
+        return $recipeCategory->deleted_at !== null && $user->can('recipe_categories.manage');
     }
 
     /**
@@ -61,6 +53,6 @@ class RecipeCategoryPolicy
      */
     public function forceDelete(User $user, RecipeCategory $recipeCategory): bool
     {
-        //
+        return $user->hasRole(config('auth.roles.admin'));
     }
 }
