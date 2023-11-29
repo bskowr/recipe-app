@@ -11,5 +11,6 @@ return [
     'navigation' => [
         'dashboard' => 'Dashboard',
         'users' => 'Użytkownicy',
+        'recipe_categories' => 'Kategorie przepisów',
     ],
 ];
