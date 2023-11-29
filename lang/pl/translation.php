@@ -9,7 +9,9 @@ return [
     'messages' => [
         'successes' => [
             'updated_title' => 'Zaktualizowano',
-            'updated' => 'Zaktualizowane kategorię przepisów :name',
+            'updated' => 'Zaktualizowano :name',
+            'stored_title' => 'Zapisano',
+            'stored'   => 'Zapisano :name'
         ],
     ],
     'attributes' => [

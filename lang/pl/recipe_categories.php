@@ -10,6 +10,7 @@ return [
         'edit_form_title' => 'Edytuj kategorię przepisu',
     ],
     'actions' => [
+        'create' => "Dodaj kategorię przepisów",
         'edit' => 'Edytuj kategorię przepisów',
     ],
     'attributes' => [
