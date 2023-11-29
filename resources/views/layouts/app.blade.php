@@ -12,12 +12,13 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        @wireUiScripts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
+        @wireUiStyles
         @livewireStyles
         @laravelViewsStyles(laravel-views,tailwindcss,livewire)
-        @wireUiScripts
     </head>
     <body class="font-sans antialiased">
         <x-banner />
@@ -44,6 +45,5 @@
         @stack('modals')
         @livewireScripts
         @laravelViewsScripts(laravel-views)
-        @wireUiStyles
     </body>
 </html>
