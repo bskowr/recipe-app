@@ -7,6 +7,10 @@ return [
                 'title' => 'Usunięto',
                 'description' => 'Usunięto kategorię składnika :name',
             ],
+            'restore' => [
+                'title' => 'Usunięto',
+                'description' => 'Przywrócono kategorię składnika :name',
+            ],
         ],
     ],
     'dialogs' => [
