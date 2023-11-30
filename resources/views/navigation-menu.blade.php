@@ -15,6 +15,9 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('translation.navigation.dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('recipe_categories.index') }}" :active="request()->routeIs('recipe_categories.index')">
+                        {{ __('translation.navigation.recipe_categories') }}
+                    </x-nav-link>
                     @can('users.index')
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('translation.navigation.users') }}
@@ -147,11 +150,15 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('recipe_categories.index') }}" :active="request()->routeIs('recipe_categories.index')">
+                {{ __('translation.navigation.recipe_categories') }}
+            </x-responsive-nav-link>
             @can('users.index')
             <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                 {{ __('translation.navigation.users') }}
             </x-responsive-nav-link>
             @endcan
+
         </div>
 
         <!-- Responsive Settings Options -->

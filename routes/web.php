@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecipeCategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,9 @@ Route::middleware([
             ->name('index')
             ->middleware(['permission:users.index']);
     });
+    Route::resource('recipe_categories', RecipeCategoryController::class)->only(
+        [
+            'index', 'create', 'edit'
+        ]
+        );
 });
