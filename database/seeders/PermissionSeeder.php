@@ -25,6 +25,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'recipe_categories.update']);
         Permission::create(['name'=>'recipe_categories.delete']);
         Permission::create(['name'=>'recipe_categories.restore']);
+        Permission::create(['name'=>'ingredient_categories.index']);
+        Permission::create(['name'=>'ingredient_categories.create']);
+        Permission::create(['name'=>'ingredient_categories.update']);
+        Permission::create(['name'=>'ingredient_categories.delete']);
+        Permission::create(['name'=>'ingredient_categories.restore']);
         
         /* przypisanie uprawnien do roli admin */
         $userRole = Role::findByName(config('auth.roles.admin'));
@@ -37,5 +42,10 @@ class PermissionSeeder extends Seeder
         $userRole->givePermissionTo('recipe_categories.update');
         $userRole->givePermissionTo('recipe_categories.delete');
         $userRole->givePermissionTo('recipe_categories.restore');
+        $userRole->givePermissionTo('ingredient_categories.index');
+        $userRole->givePermissionTo('ingredient_categories.create');
+        $userRole->givePermissionTo('ingredient_categories.update');
+        $userRole->givePermissionTo('ingredient_categories.delete');
+        $userRole->givePermissionTo('ingredient_categories.restore');
     }
 }

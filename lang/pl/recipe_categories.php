@@ -5,14 +5,22 @@ return [
         'successes' => [
             'soft_delete' => [
                 'title' => 'Usunięto',
-                'description' => 'Usunięto kategorię prepisów :name',
+                'description' => 'Usunięto kategorię przepisu :name',
+            ],
+            'restore' => [
+                'title' => 'Usunięto',
+                'description' => 'Przywrócono kategorię przepisu :name',
             ],
         ],
     ],
     'dialogs' => [
         'soft_delete' => [
             'title' => 'Potwierdzenie usunięcia',
-            'description' => 'Czy na pewno usunąć kategorię przepisów :name?',
+            'description' => 'Czy na pewno usunąć kategorię przepisu :name?',
+        ],
+        'restore' => [
+            'title' => 'Potwierdzenie przywrocenia',
+            'description' => 'Czy na pewno przywrócić kategorię przepisu :name?',
         ],
     ],
     'labels' => [
@@ -20,9 +28,10 @@ return [
         'edit_form_title' => 'Edytuj kategorię przepisu',
     ],
     'actions' => [
-        'create' => "Dodaj kategorię przepisów",
-        'edit' => 'Edytuj kategorię przepisów',
-        'soft_delete' => 'Usuń kategorię przepisów',
+        'create' => "Dodaj kategorię przepisu",
+        'edit' => 'Edytuj kategorię przepisu',
+        'soft_delete' => 'Usuń kategorię przepisu',
+        'restore' => 'Przywróć kategorię przepisu',
     ],
     'attributes' => [
         'name' => 'Nazwa kategorii',
