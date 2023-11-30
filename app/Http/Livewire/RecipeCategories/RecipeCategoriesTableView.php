@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\RecipeCategories;
 
-use App\Http\Livewire\RecipeCategories\Actions\SoftDeleteRecipeCategoryAction;
 use WireUi\Traits\Actions;
 use App\Models\RecipeCategory;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\RecipeCategories\Actions\EditRecipeCategoryAction;
+use App\Http\Livewire\RecipeCategories\Actions\RestoreRecipeCategoryAction;
+use App\Http\Livewire\RecipeCategories\Actions\SoftDeleteRecipeCategoryAction;
 
 class RecipeCategoriesTableView extends TableView
 {
@@ -20,6 +22,11 @@ class RecipeCategoriesTableView extends TableView
         'name'
     ];
     protected $paginate = 25;
+
+    public function repository(): Builder
+    {
+        return RecipeCategory::query()->withTrashed();
+    }
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -58,7 +65,8 @@ class RecipeCategoriesTableView extends TableView
                 'recipe_categories.edit',
                 __('recipe_categories.actions.edit')
             ),
-            new SoftDeleteRecipeCategoryAction()
+            new SoftDeleteRecipeCategoryAction(),
+            new RestoreRecipeCategoryAction()
         ];
     }
 
@@ -67,7 +75,16 @@ class RecipeCategoriesTableView extends TableView
         $recipeCategory->delete();
         $this->notification()->success(
             $title = __('recipe_categories.messages.successes.soft_delete.title'),
-            $description = __('recipe_categories.messages.successes.delete.description', ['name' => $recipeCategory->name])
+            $description = __('recipe_categories.messages.successes.soft_delete.description', ['name' => $recipeCategory->name])
+        );
+    }
+
+    public function restore(int $id){
+        $recipeCategory = RecipeCategory::withTrashed()->find($id);
+        $recipeCategory->restore();
+        $this->notification()->success(
+            $title = __('recipe_categories.messages.successes.restore.title'),
+            $description = __('recipe_categories.messages.successes.restore.description', ['name' => $recipeCategory->name])
         );
     }
 }
