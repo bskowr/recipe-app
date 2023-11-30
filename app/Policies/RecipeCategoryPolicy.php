@@ -21,7 +21,7 @@ class RecipeCategoryPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('recipe_categories.manage');
+        return $user->can('recipe_categories.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class RecipeCategoryPolicy
      */
     public function update(User $user, RecipeCategory $recipeCategory): bool
     {
-        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.manage');
+        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.update');
     }
 
     /**
@@ -37,7 +37,7 @@ class RecipeCategoryPolicy
      */
     public function delete(User $user, RecipeCategory $recipeCategory): bool
     {
-        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.manage');
+        return $recipeCategory->deleted_at === null && $user->can('recipe_categories.delete');
     }
 
     /**
@@ -45,7 +45,7 @@ class RecipeCategoryPolicy
      */
     public function restore(User $user, RecipeCategory $recipeCategory): bool
     {
-        return $recipeCategory->deleted_at !== null && $user->can('recipe_categories.manage');
+        return $recipeCategory->deleted_at !== null && $user->can('recipe_categories.restore');
     }
 
     /**

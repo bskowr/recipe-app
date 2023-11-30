@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\RecipeCategories;
 
+use App\Http\Livewire\RecipeCategories\Actions\SoftDeleteRecipeCategoryAction;
 use WireUi\Traits\Actions;
 use App\Models\RecipeCategory;
 use LaravelViews\Facades\Header;
@@ -56,7 +57,17 @@ class RecipeCategoriesTableView extends TableView
             new EditRecipeCategoryAction(
                 'recipe_categories.edit',
                 __('recipe_categories.actions.edit')
-            )
+            ),
+            new SoftDeleteRecipeCategoryAction()
         ];
+    }
+
+    public function softDelete(int $id){
+        $recipeCategory = RecipeCategory::find($id);
+        $recipeCategory->delete();
+        $this->notification()->success(
+            $title = __('recipe_categories.messages.successes.soft_delete.title'),
+            $description = __('recipe_categories.messages.successes.delete.description', ['name' => $recipeCategory->name])
+        );
     }
 }

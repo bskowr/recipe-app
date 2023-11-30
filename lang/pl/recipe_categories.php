@@ -3,6 +3,16 @@
 return [
     'messages' => [
         'successes' => [
+            'soft_delete' => [
+                'title' => 'Usunięto',
+                'description' => 'Usunięto kategorię prepisów :name',
+            ],
+        ],
+    ],
+    'dialogs' => [
+        'soft_delete' => [
+            'title' => 'Potwierdzenie usunięcia',
+            'description' => 'Czy na pewno usunąć kategorię przepisów :name?',
         ],
     ],
     'labels' => [
@@ -12,6 +22,7 @@ return [
     'actions' => [
         'create' => "Dodaj kategorię przepisów",
         'edit' => 'Edytuj kategorię przepisów',
+        'soft_delete' => 'Usuń kategorię przepisów',
     ],
     'attributes' => [
         'name' => 'Nazwa kategorii',
