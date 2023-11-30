@@ -18,6 +18,10 @@ return [
             'title' => 'Potwierdzenie usunięcia',
             'description' => 'Czy na pewno usunąć kategorię składnika :name?',
         ],
+        'restore' => [
+            'title' => 'Potwierdzenie przywrocenia',
+            'description' => 'Czy na pewno przywrócić kategorię składnika :name?',
+        ],
     ],
     'labels' => [
         'create_form_title' => 'Utwórz kategorię składnika',
@@ -27,6 +31,7 @@ return [
         'create' => "Dodaj kategorię składnika",
         'edit' => 'Edytuj kategorię składnika',
         'soft_delete' => 'Usuń kategorię składnika',
+        'restore' => 'Przywróć kategorię składnika',
     ],
     'attributes' => [
         'name' => 'Nazwa kategorii',
