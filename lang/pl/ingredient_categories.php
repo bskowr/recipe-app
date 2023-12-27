@@ -8,7 +8,7 @@ return [
                 'description' => 'Usunięto kategorię składnika :name',
             ],
             'restore' => [
-                'title' => 'Usunięto',
+                'title' => 'Przywrócono',
                 'description' => 'Przywrócono kategorię składnika :name',
             ],
         ],

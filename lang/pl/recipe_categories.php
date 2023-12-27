@@ -8,7 +8,7 @@ return [
                 'description' => 'Usunięto kategorię przepisu :name',
             ],
             'restore' => [
-                'title' => 'Usunięto',
+                'title' => 'Przywrócono',
                 'description' => 'Przywrócono kategorię przepisu :name',
             ],
         ],
