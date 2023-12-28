@@ -11,11 +11,12 @@ class SoftDeleteAction extends Action
     public $icon = 'trash-2';
 
     public function __construct(?string $title = null){
-        if ($title != null) {
+        parent::__construct();
+        if ($title !== null) {
             $this->title = $title;
         }
         else {
-            $this-> title = __('translation.actions.soft_delete');
+            $this->title = __('translation.actions.soft_delete');
         }
     }
 

@@ -2,39 +2,24 @@
 
 namespace App\Http\Livewire\IngredientCategories\Actions;
 
-use LaravelViews\Views\View;
-use LaravelViews\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
+use App\Http\Livewire\Actions\SoftDeleteAction;
 
-class SoftDeleteIngredientCategoryAction extends Action
+class SoftDeleteIngredientCategoryAction extends SoftDeleteAction
 {
-    public $title;
-    public $icon = "trash";
-
-    public function __construct()
+    public function __construct(?string $title = null)
     {
-        parent::__construct();
-        $this->title = __('ingredient_categories.actions.soft_delete');
+        parent::__construct($title);
+    }
+    protected function dialogTitle(): String
+    {
+        return __('ingredient_category.dialogs.soft_delete.title');
     }
 
-    public function handle($model, View $view)
+    protected function dialogDescription(Model $model): String
     {
-        $view->dialog()->confirm([
-            'title' => __('ingredient_categories.dialogs.soft_delete.title'),
-            'description' => __('ingredient_categories.dialogs.soft_delete.description', ['name' => $model->name]),
-            'icon' => 'question',
-            'iconColor' => 'text-red-500',
-            'accept' => [
-                'label' => __('translation.yes'),
-                'method' => 'softDelete',
-                'params' => $model->id
-            ],
-            'reject' => [
-                'label' => __('translation.no'),
-            ],
+        return __('ingredient_category.dialogs.soft_delete.description', [
+            'name' => $model
         ]);
-    }
-
-    public function renderIf($model, View $view){
-        return request()->user()->can('delete', $model);
     }
 }

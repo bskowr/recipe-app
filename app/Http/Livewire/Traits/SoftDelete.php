@@ -15,7 +15,7 @@ trait SoftDelete
     }
 
     public function softDelete($id){
-        $model = $this->model->find($id);
+        $model = $this->model::find($id);
         $model->delete();
         $this->notification()->success(
             $title = $this->softDeleteNotificationTitle(),
