@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingredient', function (Blueprint $table) {
+        Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->string('description', 512);
-            $table->unsignedBigInteger('ingredient_category_id');
-            $table->foreign('ingredient_category_id')->references('id')->on('ingredient_category')->onDelete('no action');
+            $table->string('description', 512)->nullable();
+            $table->unsignedBigInteger('ingredient_category_id')->nullable();
+            $table->foreign('ingredient_category_id')->references('id')->on('ingredient_categories')->onDelete('set null');
             $table->decimal('price', 8, 2);
             $table->decimal('owned_amount', 8, 2);
             $table->string('unit', 8)->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredient');
+        Schema::dropIfExists('ingredients');
     }
 };
