@@ -13,4 +13,8 @@ class Ingredient extends Model
     protected $fillable = [
         'name', 'description', 'ingredient_category_id', 'price', 'owned_amount', 'unit'
     ];
+
+    public function ingredientCategory(){
+        return $this->belongsTo(IngredientCategory::class);
+    }
 }
