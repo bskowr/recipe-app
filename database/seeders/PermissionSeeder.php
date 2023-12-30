@@ -30,8 +30,13 @@ class PermissionSeeder extends Seeder
         Permission::create(['name'=>'ingredient_categories.update']);
         Permission::create(['name'=>'ingredient_categories.delete']);
         Permission::create(['name'=>'ingredient_categories.restore']);
+        Permission::create(['name'=>'ingredient.index']);
+        Permission::create(['name'=>'ingredient.create']);
+        Permission::create(['name'=>'ingredient.update']);
+        Permission::create(['name'=>'ingredient.delete']);
+        Permission::create(['name'=>'ingredient.restore']);
         
-        /* przypisanie uprawnien do roli admin */
+        /* add permissions to admin role */
         $userRole = Role::findByName(config('auth.roles.admin'));
         $userRole->givePermissionTo('users.index');
         $userRole->givePermissionTo('users.store');
@@ -47,5 +52,25 @@ class PermissionSeeder extends Seeder
         $userRole->givePermissionTo('ingredient_categories.update');
         $userRole->givePermissionTo('ingredient_categories.delete');
         $userRole->givePermissionTo('ingredient_categories.restore');
+        $userRole->givePermissionTo('ingredient.index');
+        $userRole->givePermissionTo('ingredient.create');
+        $userRole->givePermissionTo('ingredient.update');
+        $userRole->givePermissionTo('ingredient.delete');
+        $userRole->givePermissionTo('ingredient.restore');
+                
+        /* add permissions to editor role */
+        $userRole = Role::findByName(config('auth.roles.editor'));
+        $userRole->givePermissionTo('recipe_categories.index');
+        $userRole->givePermissionTo('ingredient_categories.index');
+        $userRole->givePermissionTo('ingredient.index');
+        $userRole->givePermissionTo('ingredient.create');
+        $userRole->givePermissionTo('ingredient.update');
+        $userRole->givePermissionTo('ingredient.delete');
+                
+        /* add permissions to reader role */
+        $userRole = Role::findByName(config('auth.roles.reader'));
+        $userRole->givePermissionTo('recipe_categories.index');
+        $userRole->givePermissionTo('ingredient_categories.index');
+        $userRole->givePermissionTo('ingredient.index');
     }
 }
