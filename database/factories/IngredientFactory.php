@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\IngredientCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +17,14 @@ class IngredientFactory extends Factory
      */
     public function definition(): array
     {
+        $unit_array = ['kg', 'g', 'l', 'ml'];
         return [
-            'name' => $this->faker->unique()->word(100),
-            'description' => rand(0, 10) === 0 ? $this->faker->text(512) : null,
-            'ingredient_category_id' => IngredientFactory::select('id')->orderByRaw('RAND()')->first()->id,
+            'name' => $this->faker->word(100),
+            'description' => rand(0, 10) === 0 ? null : $this->faker->text(512),
+            'ingredient_category_id' => IngredientCategory::select('id')->orderByRaw('RAND()')->first()->id,
             'price' => $this->faker->randomFloat(2, 0.01, 500.00),
             'owned_amount' => $this->faker->randomFloat(2, 0.00, 250.00),
-            'unit' => rand(0, 10) === 0 ?array_rand(['kg', 'g', 'l', 'ml']) : null,
+            'unit' => rand(0, 10) === 0 ? null : $unit_array[array_rand($unit_array)],
             'created_at' => $this->faker->dateTimeBetween('- 8 weeks', '- 2 weeks'),
             'updated_at' => $this->faker->dateTimeBetween('- 2 weeks', '- 1 weeks'),
             'deleted_at' => rand(0, 10) === 0 ? $this->faker->dateTimeBetween('- 1 week', '+ 2 weeks') : null            
