@@ -20,7 +20,7 @@ class IngredientForm extends Component
                 'required',
                 'string',
                 'min:3',
-                'unique:ingredient,name'.($this->editMode ? (','.$this->ingredient->id) : '')
+                'unique:ingredients,name'.($this->editMode ? (','.$this->ingredient->id) : '')
             ],
             'ingredient.description' => [
                 'string'
