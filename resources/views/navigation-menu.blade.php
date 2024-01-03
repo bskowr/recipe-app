@@ -25,6 +25,11 @@
                         {{ __('translation.navigation.ingredient_categories') }}
                     </x-nav-link>
                     @endcan
+                    @can('ingredient.index')
+                    <x-nav-link href="{{ route('ingredient.index') }}" :active="request()->routeIs('ingredient.index')">
+                        {{ __('translation.navigation.ingredient') }}
+                    </x-nav-link>
+                    @endcan
                     @can('users.index')
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                         {{ __('translation.navigation.users') }}
