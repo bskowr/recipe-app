@@ -33,5 +33,6 @@ return [
         'users' => 'Użytkownicy',
         'recipe_categories' => 'Kategorie przepisów',
         'ingredient_categories' => 'Kategorie składników',
+        'ingredient' => 'Składniki',
     ],
 ];
