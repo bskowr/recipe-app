@@ -19,13 +19,18 @@ class ingredientGridView extends GridView
      */
     protected $model = Ingredient::class;
     public $maxCols = 5;
+    public $cardComponent = 'livewire.ingredients.grid-view-item';
     public $searchBy = [
-        'name'
+        'name', 'descriprion', 'ingredient_category.name'
     ];
 
     public function repository(): Builder
     {
-        return Ingredient::query()->withTrashed();
+        $query = Ingredient::query()->with(['ingredientCategory']);
+        if (request()->user()->can('ingredients.restore')) {
+            $query->withTrashed();
+        }
+        return $query;
     }
 
     /**
@@ -38,8 +43,11 @@ class ingredientGridView extends GridView
         return [
             'image' => $model->imageURL(),
             'title' => $model->name,
-            'subtitle' => IngredientCategory::withTrashed()->find($model->ingredient_category_id)->name,
-            'description' => $model->description
+            'category' => $model->ingredientCategory->name,
+            'description' => $model->description,
+            'price' => $model->price,
+            'owned_amount' => $model->owned_amount,
+            'unit' => $model->unit,
         ];
     }
 }
