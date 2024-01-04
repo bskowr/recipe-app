@@ -18,6 +18,7 @@ class ingredientGridView extends GridView
      * Sets a model class to get the initial data
      */
     protected $model = Ingredient::class;
+    public $maxCols = 5;
     public $searchBy = [
         'name'
     ];
@@ -35,7 +36,7 @@ class ingredientGridView extends GridView
     public function card($model)
     {
         return [
-            'image' => '',
+            'image' => $model->imageURL(),
             'title' => $model->name,
             'subtitle' => IngredientCategory::withTrashed()->find($model->ingredient_category_id)->name,
             'description' => $model->description
