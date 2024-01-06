@@ -21,7 +21,7 @@ class RecipeFactory extends Factory
             'name' => $this->faker->word(100),
             'description' => rand(0, 10) === 0 ? null : $this->faker->text(512),
             'estimated_time' => $this->faker->time(),
-            'portions' => $this->faker->randomNumber(100),
+            'portions' => $this->faker->randomNumber(),
             'recipe_category_id' => RecipeCategory::select('id')->orderByRaw('RAND()')->first()->id,
             'created_at' => $this->faker->dateTimeBetween('- 8 weeks', '- 2 weeks'),
             'updated_at' => $this->faker->dateTimeBetween('- 2 weeks', '- 1 weeks'),

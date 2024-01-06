@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recipe_step', function (Blueprint $table) {
+        Schema::create('recipe_steps', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->string('description', 512)->nullable();
             $table->time('estimated_time');
             $table->unsignedInteger('step_number');
             $table->unsignedBigInteger('recipe_id');
-            $table->foreign('recipe_id')->references('id')->on('recipe')->onDelete('delete');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recipe_step');
+        Schema::dropIfExists('recipe_steps');
     }
 };
