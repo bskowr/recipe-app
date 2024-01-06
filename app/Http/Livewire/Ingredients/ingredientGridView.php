@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Ingredient;
+namespace App\Http\Livewire\Ingredients;
 
+use App\Http\Livewire\Ingredients\Filters\IngredientCategoryFilter;
 use App\Models\Ingredient;
 use WireUi\Traits\Actions;
 use LaravelViews\Views\GridView;
@@ -48,6 +49,12 @@ class ingredientGridView extends GridView
             'price' => $model->price,
             'owned_amount' => $model->owned_amount,
             'unit' => $model->unit,
+        ];
+    }
+
+    protected function filters() {
+        return [
+            new IngredientCategoryFilter,
         ];
     }
 }

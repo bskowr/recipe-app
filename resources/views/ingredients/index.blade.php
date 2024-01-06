@@ -13,7 +13,7 @@
                         <x-button primary label="{{ __('ingredient.actions.create') }}" href="{{ route('ingredient.create') }}" class="justify-self-end" />
                     </div>
                 @endcan
-                <livewire:ingredient.ingredient-grid-view />
+                <livewire:ingredients.ingredient-grid-view />
             </div>
         </div>
     </div>
