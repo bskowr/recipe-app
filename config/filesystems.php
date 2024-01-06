@@ -73,4 +73,9 @@ return [
         public_path('storage') => storage_path('app/public'),
     ],
 
+    /* image directory */
+    'images_directory' => env('IMAGES_DIR', 'images'),
+    
+    /* default image */
+    'default_image' => env('DEFAULT_IMAGE', 'default-image.png')
 ];

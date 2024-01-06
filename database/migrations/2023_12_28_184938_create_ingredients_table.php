@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('description', 512)->nullable();
             $table->unsignedBigInteger('ingredient_category_id')->nullable();
             $table->foreign('ingredient_category_id')->references('id')->on('ingredient_categories')->onDelete('set null');
-            $table->decimal('price', 8, 2);
-            $table->decimal('owned_amount', 8, 2);
+            $table->decimal('price', 8, 2)->default(0);
+            $table->decimal('owned_amount', 8, 2)->default(0);
             $table->string('unit', 8)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

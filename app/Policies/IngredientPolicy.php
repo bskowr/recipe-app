@@ -12,7 +12,7 @@ class IngredientPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('ingredient.index');
+        return $user->can('ingredients.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class IngredientPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('ingredient.create');
+        return $user->can('ingredients.create');
     }
 
     /**
@@ -28,7 +28,7 @@ class IngredientPolicy
      */
     public function update(User $user, Ingredient $ingredient): bool
     {
-        return $ingredient->deleted_at === null && $user->can('ingredient.update');
+        return $ingredient->deleted_at === null && $user->can('ingredients.update');
     }
 
     /**
@@ -36,7 +36,7 @@ class IngredientPolicy
      */
     public function delete(User $user, Ingredient $ingredient): bool
     {
-        return $ingredient->deleted_at === null && $user->can('ingredient.delete');
+        return $ingredient->deleted_at === null && $user->can('ingredients.delete');
     }
 
     /**
@@ -44,7 +44,7 @@ class IngredientPolicy
      */
     public function restore(User $user, Ingredient $ingredient): bool
     {
-        return $ingredient->deleted_at !== null && $user->can('ingredient.restore');
+        return $ingredient->deleted_at !== null && $user->can('ingredients.restore');
     }
 
     /**
