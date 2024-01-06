@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeCategoryController;
 use App\Http\Controllers\IngredientCategoryController;
 
@@ -39,6 +40,12 @@ Route::middleware([
         ]
     );
     Route::resource('ingredient_categories', IngredientCategoryController::class)->only(
+        [
+            'index', 'create', 'edit'
+        ]
+    );
+    Route::get('categories/async', [IngredientCategoryController::class, 'async'])->name('categories.async');
+    Route::resource('ingredients', IngredientController::class)->only(
         [
             'index', 'create', 'edit'
         ]

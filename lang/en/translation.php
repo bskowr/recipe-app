@@ -6,6 +6,15 @@ return [
     'back' => 'Back',
     'save' => 'Save',
     'enter' => 'Enter value',
+    'actions' => [
+        'soft_delete' => 'Object deletion',
+    ],
+    'dialogs' => [
+        'soft_delete' => [
+            'title' => 'Object deletion',
+            'description' => 'Do you want to delete :model?'
+        ],
+    ],
     'messages' => [
         'successes' => [
             'updated_title' => 'Updated',

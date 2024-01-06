@@ -3,9 +3,10 @@
 namespace App\Http\Livewire\IngredientCategories;
 
 use WireUi\Traits\Actions;
-use App\Models\IngredientCategory;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use App\Models\IngredientCategory;
+use App\Http\Livewire\Traits\SoftDelete;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\IngredientCategories\Actions\EditIngredientCategoryAction;
 use App\Http\Livewire\IngredientCategories\Actions\RestoreIngredientCategoryAction;
@@ -14,6 +15,8 @@ use App\Http\Livewire\IngredientCategories\Actions\SoftDeleteIngredientCategoryA
 class IngredientCategoriesTableView extends TableView
 {
     use Actions;
+    use SoftDelete;
+
     /**
      * Sets a model class to get the initial data
      */
@@ -65,18 +68,11 @@ class IngredientCategoriesTableView extends TableView
                 'ingredient_categories.edit',
                 __('ingredient_categories.actions.edit')
             ),
-            new SoftDeleteIngredientCategoryAction(),
+            new SoftDeleteIngredientCategoryAction(
+                __('ingredient_categories.actions.soft_delete')
+            ),
             new RestoreIngredientCategoryAction()
         ];
-    }
-
-    public function softDelete(int $id){
-        $ingredientCategory = IngredientCategory::find($id);
-        $ingredientCategory->delete();
-        $this->notification()->success(
-            $title = __('ingredient_categories.messages.successes.soft_delete.title'),
-            $description = __('ingredient_categories.messages.successes.soft_delete.description', ['name' => $ingredientCategory->name])
-        );
     }
 
     public function restore(int $id){

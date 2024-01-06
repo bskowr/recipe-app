@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\IngredientCategories\Actions;
+namespace App\Http\Livewire\Ingredients\Actions;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Livewire\Actions\SoftDeleteAction;
 
-class SoftDeleteIngredientCategoryAction extends SoftDeleteAction
+class SoftDeleteIngredientAction extends SoftDeleteAction
 {
     public function __construct(?string $title = null)
     {
@@ -13,13 +13,13 @@ class SoftDeleteIngredientCategoryAction extends SoftDeleteAction
     }
     protected function dialogTitle(): String
     {
-        return __('ingredient_category.dialogs.soft_delete.title');
+        return __('ingredients.dialogs.soft_delete.title');
     }
 
     protected function dialogDescription(Model $model): String
     {
-        return __('ingredient_category.dialogs.soft_delete.description', [
-            'name' => $model
+        return __('ingredients.dialogs.soft_delete.description', [
+            'name' => $model->name
         ]);
     }
 }
