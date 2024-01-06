@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description', 512)->nullable();
             $table->time('estimated_time');
             $table->unsignedInteger('step_number');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('recipe_id');
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });

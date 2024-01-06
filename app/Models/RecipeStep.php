@@ -4,26 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Recipe extends Model
+class RecipeStep extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-
+    
     protected $fillable = [
         'name',
         'description',
-        'recipe_category_id',
-        'image',
         'estimated_time',
-        'portions'
+        'step_number',
+        'image',
+        'recipe_id',
     ];
 
-    public function recipeCategory(){
-        return $this->belongsTo(RecipeCategory::class)->withTrashed();
+    public function recipe(){
+        return $this->belongsTo(Recipe::class);
     }
 
     protected function image(): Attribute
