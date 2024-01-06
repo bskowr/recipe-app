@@ -47,7 +47,7 @@
         @endif
         @if ($price)
           <span class="text-sm text-gray-600 flex justify-start">
-            {{ __('ingredients.attributes.amount') }}: {!! $owned_amount !!} {!! $unit !!}
+            {{ __('ingredients.attributes.owned_amount') }}: {!! $owned_amount !!} {!! $unit !!}
           </span>
         @endif
       </div>

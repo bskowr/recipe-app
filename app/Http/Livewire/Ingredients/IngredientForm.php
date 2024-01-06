@@ -30,8 +30,8 @@ class IngredientForm extends Component
 
     public function validationAttributes(){
         return [
-            'name' => __('ingredient.attributes.name'),
-            'description' => __('ingredient.attributes.description'),
+            'name' => __('ingredients.attributes.name'),
+            'description' => __('ingredients.attributes.description'),
         ];
     }
 
@@ -65,6 +65,6 @@ class IngredientForm extends Component
 
     public function render()
     {
-        return view('livewire.ingredient.ingredient-form');
+        return view('livewire.ingredients.ingredient-form');
     }
 }

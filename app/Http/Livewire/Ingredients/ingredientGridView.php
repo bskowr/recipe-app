@@ -22,7 +22,7 @@ class ingredientGridView extends GridView
     public $maxCols = 5;
     public $cardComponent = 'livewire.ingredients.grid-view-item';
     public $searchBy = [
-        'name', 'descriprion', 'ingredient_category.name'
+        'name', 'description', 'ingredientCategory.name'
     ];
 
     public function repository(): Builder

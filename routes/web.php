@@ -44,7 +44,7 @@ Route::middleware([
             'index', 'create', 'edit'
         ]
     );
-    Route::resource('ingredient', IngredientController::class)->only(
+    Route::resource('ingredients', IngredientController::class)->only(
         [
             'index', 'create', 'edit'
         ]

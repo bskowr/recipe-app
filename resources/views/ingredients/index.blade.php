@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('translation.navigation.ingredient') }}
+            {{ __('translation.navigation.ingredients') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="table-view-wrapper bg-white shadow-xl sm:rounded-lg">
                 @can('create', App\Models\Ingredient::class)
                     <div class="grid justify-items-strech pr-2 pt-2">
-                        <x-button primary label="{{ __('ingredient.actions.create') }}" href="{{ route('ingredient.create') }}" class="justify-self-end" />
+                        <x-button primary label="{{ __('ingredients.actions.create') }}" href="{{ route('ingredients.create') }}" class="justify-self-end" />
                     </div>
                 @endcan
                 <livewire:ingredients.ingredient-grid-view />
