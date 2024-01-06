@@ -44,6 +44,7 @@ Route::middleware([
             'index', 'create', 'edit'
         ]
     );
+    Route::get('categories/async', [IngredientCategoryController::class, 'async'])->name('categories/async');
     Route::resource('ingredients', IngredientController::class)->only(
         [
             'index', 'create', 'edit'

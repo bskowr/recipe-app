@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IngredientCategory;
+use Illuminate\Database\Eloquent\Builder;
+use App\Facades\IngredientCategoryRepository;
 
 class IngredientCategoryController extends Controller
 {
@@ -47,6 +49,13 @@ class IngredientCategoryController extends Controller
             [
                 'ingredientCategory' => $ingredientCategory,
             ]
+        );
+    }
+
+    public function async(Request $request){
+        return IngredientCategoryRepository::select(
+            $request->search,
+            $request->selected,
         );
     }
 }
