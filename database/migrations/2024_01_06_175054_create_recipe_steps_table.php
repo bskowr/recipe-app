@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('recipe_id');
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

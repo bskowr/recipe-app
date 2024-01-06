@@ -24,6 +24,7 @@ return new class extends Migration
                 ->on('ingredients')
                 ->onDelete('no action');
             $table->decimal('amount_used', 8, 2, true);
+            $table->timestamps();
         });
     }
 
