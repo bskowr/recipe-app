@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Facades\IngredientCategoryRepository;
+use App\Http\Repositories\IngredientCategoryRepository;
 
 class IngredientCategoryProvider extends ServiceProvider
 {

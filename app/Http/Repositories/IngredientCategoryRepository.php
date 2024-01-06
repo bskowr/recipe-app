@@ -21,7 +21,7 @@ class IngredientCategoryRepository
         )
         ->when(
             $selected,
-            fn (Builder $query) => $query->whereIn('id', $selected,),
+            fn (Builder $query) => $query->whereIn('id', $selected),
             fn (Builder $query) => $query
         )
         ->get();

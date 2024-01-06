@@ -8,8 +8,18 @@ return [
                 'description' => 'Usunięto składnik :name',
             ],
             'restore' => [
-                'title' => 'Usunięto',
+                'title' => 'Przywrócono',
                 'description' => 'Przywrócono składnik :name',
+            ],
+            'image_delete' => [
+                'title' => 'Usunięto zdjęcie składnika',
+                'description' => 'Usunięto zdjecie składnika :name',
+            ],
+        ],
+        'errors' => [
+            'image_delete' => [
+                'title' => 'Usuwanie zdjęcia składnika zakończone niepowodzeniem',
+                'description' => 'Nie udało się usunąć zdjęcia dla składnika :name',
             ],
         ],
     ],
