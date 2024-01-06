@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire\Ingredients;
 
-use App\Http\Livewire\Ingredients\Filters\IngredientCategoryFilter;
 use App\Models\Ingredient;
 use WireUi\Traits\Actions;
 use LaravelViews\Views\GridView;
 use App\Models\IngredientCategory;
 use App\Http\Livewire\Traits\SoftDelete;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Ingredients\Actions\EditIngredientAction;
+use App\Http\Livewire\Ingredients\Actions\RestoreIngredientAction;
+use App\Http\Livewire\Ingredients\Filters\IngredientCategoryFilter;
+use App\Http\Livewire\Ingredients\Actions\SoftDeleteIngredientAction;
 
 class ingredientGridView extends GridView
 {
@@ -56,5 +59,28 @@ class ingredientGridView extends GridView
         return [
             new IngredientCategoryFilter,
         ];
+    }
+
+    protected function actionsByRow()
+    {
+        return [
+            new EditIngredientAction(
+                'ingredients.edit',
+                __('ingredients.actions.edit')
+            ),
+            new SoftDeleteIngredientAction(
+                __('ingredients.actions.soft_delete')
+            ),
+            new RestoreIngredientAction()
+        ];
+    }
+
+    public function restore(int $id){
+        $ingredient = Ingredient::withTrashed()->find($id);
+        $ingredient->restore();
+        $this->notification()->success(
+            $title = __('ingredients.messages.successes.restore.title'),
+            $description = __('ingredients.messages.successes.restore.description', ['name' => $ingredient->name])
+        );
     }
 }
