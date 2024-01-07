@@ -49,4 +49,14 @@ class RecipeController extends Controller
             ]
         );
     }
+
+    public function show(Recipe $recipe){
+        $this->authorize('viewAny', $recipe);
+        return view(
+            'recipes.show',
+            [
+                'recipe' => $recipe,
+            ]
+        );
+    }
 }

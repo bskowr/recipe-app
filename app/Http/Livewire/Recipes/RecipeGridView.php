@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Recipes;
 
+use App\Http\Livewire\Recipes\Actions\ViewDetailsRecipeAction;
 use App\Models\Recipe;
 use WireUi\Traits\Actions;
 use LaravelViews\Views\GridView;
@@ -69,7 +70,11 @@ class RecipeGridView extends GridView
             new SoftDeleteRecipeAction(
                 __('recipes.actions.soft_delete')
             ),
-            new RestoreRecipeAction()
+            new RestoreRecipeAction(),
+            new ViewDetailsRecipeAction(
+                'recipes.show',
+                __('recipes.actions.show')
+            ),
         ];
     }
 

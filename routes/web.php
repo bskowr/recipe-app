@@ -36,19 +36,6 @@ Route::middleware([
             ->name('index')
             ->middleware(['permission:users.index']);
     });
-    /* recipes */
-    Route::resource('recipe_categories', RecipeCategoryController::class)->only(
-        [
-            'index', 'create', 'edit'
-        ]
-    );
-    Route::get('recipe_categories/async', [RecipeCategoryController::class, 'async'])->name('recipe_categories.async');
-    Route::resource('recipes', RecipeController::class)->only(
-        [
-            'index', 'create', 'edit'
-        ]
-    );
-
     /* ingredients */
     Route::resource('ingredient_categories', IngredientCategoryController::class)->only(
         [
@@ -61,4 +48,17 @@ Route::middleware([
             'index', 'create', 'edit'
         ]
     );
+
+        /* recipes */
+        Route::resource('recipe_categories', RecipeCategoryController::class)->only(
+            [
+                'index', 'create', 'edit'
+            ]
+        );
+        Route::get('recipe_categories/async', [RecipeCategoryController::class, 'async'])->name('recipe_categories.async');
+        Route::resource('recipes', RecipeController::class)->only(
+            [
+                'index', 'show', 'create', 'edit'
+            ]
+        );
 });
