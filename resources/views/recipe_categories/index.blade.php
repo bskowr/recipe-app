@@ -10,7 +10,7 @@
             <div class="table-view-wrapper bg-white shadow-xl sm:rounded-lg">
                 @can('create', App\Models\RecipeCategory::class)
                     <div class="grid justify-items-strech pr-2 pt-2">
-                        <x-button primary label="{{ __('recipe_categories.actions.create') }}" href="{{ route('recipe_categories.create') }}" class="justify-self-end" />
+                        <x-wireui-button primary label="{{ __('recipe_categories.actions.create') }}" href="{{ route('recipe_categories.create') }}" class="justify-self-end" />
                     </div>
                 @endcan
                 <livewire:recipe-categories.recipe-categories-table-view />

@@ -10,7 +10,7 @@
             <div class="table-view-wrapper bg-white shadow-xl sm:rounded-lg">
                 @can('create', App\Models\Ingredient::class)
                     <div class="grid justify-items-strech pr-2 pt-2">
-                        <x-button primary label="{{ __('ingredients.actions.create') }}" href="{{ route('ingredients.create') }}" class="justify-self-end" />
+                        <x-wireui-button primary label="{{ __('ingredients.actions.create') }}" href="{{ route('ingredients.create') }}" class="justify-self-end" />
                     </div>
                 @endcan
                 <livewire:ingredients.ingredient-grid-view />
