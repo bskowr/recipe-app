@@ -1,4 +1,5 @@
 @props(['recipe_ingredients' => []])
+<h1>{{ __('recipes.ingredients') }}</h1>
 <ul>
   @foreach ($recipe_ingredients as $ingredient)
     <li class="px-4 py-5 border-b border-gray-200 sm:flex sm:items-center">

@@ -31,14 +31,6 @@ class RecipeDetailView extends DetailView
             UI::component('recipes.steps-list', [
                 'recipe_steps' => $model->recipeSteps
             ]),
-            UI::attributes([             
-                'recipe_category' => $model->recipeCategory->name,
-                'name' => $model->name,
-                'description' => $model->description,
-                'image' => $model->image,
-                'estimated_time' => $model->estimated_time,
-                'portions' => $model->portions
-            ]),
         ];
     }
 }
