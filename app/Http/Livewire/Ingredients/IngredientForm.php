@@ -15,7 +15,6 @@ class IngredientForm extends Component
     use AuthorizesRequests;
     use WithFileUploads;
     public Ingredient $ingredient;
-    public $ingredientCategoriesIds;
     public $image;
     public $imageURL;
     public bool $imageExists;
@@ -136,9 +135,9 @@ class IngredientForm extends Component
     }
 
     public function deleteImage(){
-        if (Storage::disk('public')->delete($this->product->image)) {
-            $this->product->image = null;
-            $this->product->save();
+        if (Storage::disk('public')->delete($this->ingredient->image)) {
+            $this->ingredient->image = null;
+            $this->ingredient->save();
             $this->imageChange();
             $this->notification()->success(
                 $title = __('ingredients.messages.successes.image_deleted.title'),

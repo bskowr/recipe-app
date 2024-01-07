@@ -1,17 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('translation.navigation.ingredient') }}
+            {{ __('translation.navigation.recipe') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                @if (isset($ingredient))
-                    <livewire:ingredients.ingredient-form :ingredient="$ingredient" :editMode="true" />
+                @if (isset($recipe))
+                    <livewire:recipes.recipe-form :recipe="$recipe" :editMode="true" />
                 @else
-                    <livewire:ingredients.ingredient-form :editMode="false" />
+                    <livewire:recipes.recipe-form :editMode="false" />
                 @endif
             </div>
         </div>
