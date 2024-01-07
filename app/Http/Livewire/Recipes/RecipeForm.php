@@ -43,11 +43,11 @@ class RecipeForm extends Component
                 'nullable',
                 'image',
             ],
-            'portions' => [
+            'recipe.portions' => [
                 'integer',
                 'gt:0',
             ], 
-            'estimated_time' => [
+            'recipe.estimated_time' => [
                 'time',
             ],
         ];
