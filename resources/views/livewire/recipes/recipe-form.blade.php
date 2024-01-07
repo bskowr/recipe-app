@@ -52,7 +52,7 @@
             <div class="">
                 @if ($imageExists)
                     <div class="relative">
-                        <img class="w-full" src="{{  $imageURL }}" alt="{{ $recipe->name }}">
+                        <img class="w-full" src="{{ $imageURL }}" alt="{{ $recipe->name }}">
                         <div class="absolute right-2 top-2 h-16">
                             <x-wireui-button.circle outline xs secondary icon="trash" wire:click="confirmDeleteImage" />
                         </div>

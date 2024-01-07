@@ -26,6 +26,10 @@ class Recipe extends Model
         return $this->belongsTo(RecipeCategory::class)->withTrashed();
     }
 
+    public function recipeSteps(){
+        return $this->hasMany(RecipeStep::class);
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(
