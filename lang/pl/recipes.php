@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'details' => 'Informacje o przepisie',
+    'show' => 'Informacje o przepisie',
     'steps' => 'Kroki przepisu',
     'ingredients' => 'Składniki w przepisie',
     'messages' => [
@@ -45,6 +45,7 @@ return [
         'edit' => 'Edytuj przepis',
         'soft_delete' => 'Usuń przepis',
         'restore' => 'Przywróć przepis',
+        'show' => 'Pokaż szczegóły'
     ],
     'attributes' => [
         'name' => 'Nazwa przepisu',

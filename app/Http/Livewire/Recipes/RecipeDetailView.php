@@ -26,7 +26,8 @@ class RecipeDetailView extends DetailView
                 'estimated_time' => $model->estimated_time,
                 'portions' => $model->portions
             ]),
-            UI::component('recipes.ingredients', [
+            UI::component('recipes.ingredients-list', [
+                'recipe_ingredients' => $model->recipeIngredients,
             ]),
             UI::component('recipes.steps-list', [
                 'recipe_steps' => $model->recipeSteps

@@ -30,6 +30,11 @@ class Recipe extends Model
         return $this->hasMany(RecipeStep::class);
     }
 
+    public function recipeIngredients(){
+        return $this->hasManyThrough(RecipeIngredient::class, RecipeStep::class);
+        
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(
