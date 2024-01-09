@@ -4,7 +4,7 @@ import typography from '@tailwindcss/typography';
 import colors from 'tailwindcss/colors.js';
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     presets: [
         require('./vendor/wireui/wireui/tailwind.config.js')
     ],
@@ -23,9 +23,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
-            colors: {
-              100: '#F0F',
-          },
         },
     },
     plugins: [forms, typography],

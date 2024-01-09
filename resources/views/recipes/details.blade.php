@@ -7,7 +7,7 @@
     'estimated_time' => '',
 ])
 <img class="w-full" src="{{ $image }}" alt="{{ $name }}">
-<h2>{{ __('recipes.details') }}</h2>
+<h2 class="text-3xl">{{ __('recipes.details') }}</h2>
 <ul>
     <li class="px-4 py-5 border-b border-gray-200 sm:flex sm:items-center">
         <div class="text-xs leading-4 font-semibold uppercase tracking-wider text-gray-900 sm:w-3/12">
