@@ -27,10 +27,10 @@ class RecipeDetailView extends DetailView
                 'portions' => $model->portions
             ]),
             UI::component('recipes.ingredients-list', [
-                'recipe_ingredients' => $model->recipeIngredients,
+                'recipe' => $model,
             ]),
             UI::component('recipes.steps-list', [
-                'recipe_steps' => $model->recipeSteps
+                'recipe' => $model
             ]),
         ];
     }

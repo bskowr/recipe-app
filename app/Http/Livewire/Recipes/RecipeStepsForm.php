@@ -2,19 +2,22 @@
 
 namespace App\Http\Livewire\Recipes;
 
+
 use App\Models\Recipe;
 use Livewire\Component;
+use App\Models\RecipeStep;
 use WireUi\Traits\Actions;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class RecipeForm extends Component
+class RecipeStepsForm extends Component
 {
     use Actions;
     use AuthorizesRequests;
     use WithFileUploads;
     public Recipe $recipe;
+    public RecipeStep $recipeStep;
     public $image;
     public $imageURL;
     public bool $imageExists;
@@ -22,48 +25,42 @@ class RecipeForm extends Component
 
     public function rules(){
         return [
-            'recipe.name' => [
+            'recipeStep.name' => [
                 'required',
                 'string',
                 'min:2',
                 'max:100',
-                'unique:recipes,name'.($this->editMode ? (','.$this->recipe->id) : ''),
             ],
-            'recipe.description' => [
+            'recipeStep.description' => [
                 'nullable',
                 'string',
                 'max:512',
             ],
-            'recipe.recipe_category_id' => [
+            'recipeStep.step_number' => [
                 'required',
-                'integer',
-                'exists:recipe_categories,id',
+                'integer'
             ],
             'image' => [
                 'nullable',
                 'image',
             ],
-            'recipe.portions' => [
-                'integer',
-                'gt:0',
-            ],
-            'recipe.estimated_time' => []
+            'recipeStep.estimated_time' => []
         ];
     }
 
     public function validationAttributes(){
         return [
-            'name' => __('recipes.attributes.name'),
-            'description' => __('recipes.attributes.description'),
-            'recipe_category_id' => __('recipes.attributes.recipe_category_id'),
-            'image' => __('recipes.attributes.image'),
-            'portions' => __('recipes.attributes.portions'),
-            'estimated_time' => __('recipes.attributes.estimated_time'),
+            'name' => __('recipes.steps.attributes.name'),
+            'description' => __('recipes.steps.attributes.description'),
+            'step_number' => __('recipes.steps.attributes.step_number'),
+            'image' => __('recipes.steps.attributes.image'),
+            'estimated_time' => __('recipes.steps.attributes.estimated_time'),
         ];
     }
 
-    public function mount(Recipe $recipe, Bool $editMode){
+    public function mount(Recipe $recipe, RecipeStep $recipeStep, Bool $editMode){
         $this->recipe = $recipe;
+        $this->recipeStep = $recipeStep;
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -76,7 +73,7 @@ class RecipeForm extends Component
         $this->dialog()->confirm([
             'title' => __('recipes.dialogs.image_delete.title'),
             'description' => __('recipes.dialogs.image_delete.description', [
-                'name' => $this->recipe->name,
+                'name' => $this->recipeStep->name,
             ]),
             'icon' => 'question',
             'iconColor' => 'text-red-500',
@@ -91,13 +88,13 @@ class RecipeForm extends Component
     }
 
     public function deleteImage(){
-        if (Storage::disk('public')->delete($this->recipe->image)) {
-            $this->recipe->image = null;
-            $this->recipe->save();
+        if (Storage::disk('public')->delete($this->recipeStep->image)) {
+            $this->recipeStep->image = null;
+            $this->recipeStep->save();
             $this->imageChange();
             $this->notification()->success(
                 $title = __('recipes.messages.successes.image_deleted.title'),
-                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->recipe->name]),
+                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->recipeStep->name]),
             );
             return;
         }
@@ -108,8 +105,8 @@ class RecipeForm extends Component
     }
 
     public function imageChange(){
-        $this->imageExists = $this->recipe->imageExists();
-        $this->imageURL = $this->recipe->imageURL();
+        $this->imageExists = $this->recipeStep->imageExists();
+        $this->imageURL = $this->recipeStep->imageURL();
     }
 
     public function save(){
@@ -120,17 +117,18 @@ class RecipeForm extends Component
         }
         $this->validate();
         
-        $recipe = $this->recipe;
+        $recipeStep = $this->recipeStep;
+        $recipeStep->recipe_id = $this->recipe->id;
         $image = $this->image;
         if ($image !== null) {
-            $recipe->image = $recipe->id.'.'.$this->image->getClientOriginalExtension();
+            $recipeStep->image = $recipeStep->id.'.'.$this->image->getClientOriginalExtension();
         }
-        $recipe->save();
+        $recipeStep->save();
         
         if ($image !== null) {
             $this->image->storeAs(
                 '',
-                $recipe->image,
+                $recipeStep->image,
                 'public'
             );
         }
@@ -140,15 +138,14 @@ class RecipeForm extends Component
                 __('translation.messages.successes.updated_title')
                 : __('translation.messages.successes.stored_title'),
             $description = $this->editMode ?
-            __('translation.messages.successes.updated', ['name' => $this->recipe->name])
-            : __('translation.messages.successes.stored', ['name' => $this->recipe->name])
+            __('translation.messages.successes.updated', ['name' => $this->recipeStep->name])
+            : __('translation.messages.successes.stored', ['name' => $this->recipeStep->name])
         );
-        $this->editMode = true;
-        $this->imageChange();
+        return redirect()->to('/recipes'.'/'.$recipeStep->recipe->id);
     }
 
     public function render()
     {
-        return view('livewire.recipes.recipe-form');
+        return view('livewire.recipes.recipe-steps-form');
     }
 }

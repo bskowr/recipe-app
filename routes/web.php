@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\RecipeStepController;
 use App\Http\Controllers\RecipeCategoryController;
 use App\Http\Controllers\IngredientCategoryController;
 
@@ -49,16 +50,23 @@ Route::middleware([
         ]
     );
 
-        /* recipes */
-        Route::resource('recipe_categories', RecipeCategoryController::class)->only(
-            [
-                'index', 'create', 'edit'
-            ]
-        );
-        Route::get('recipe_categories/async', [RecipeCategoryController::class, 'async'])->name('recipe_categories.async');
-        Route::resource('recipes', RecipeController::class)->only(
-            [
-                'index', 'show', 'create', 'edit'
-            ]
-        );
+    /* recipes */
+    Route::resource('recipe_categories', RecipeCategoryController::class)->only(
+        [
+            'index', 'create', 'edit'
+        ]
+    );
+    Route::get('recipe_categories/async', [RecipeCategoryController::class, 'async'])->name('recipe_categories.async');
+    Route::resource('recipes', RecipeController::class)->only(
+        [
+            'index', 'show', 'create', 'edit'
+        ]
+    );
+    Route::resource('recipes.steps', RecipeStepController::class)->only(
+        [
+            'create', 'edit'
+        ]
+    )->scoped(
+        ['recipe_id' => 'recipes:id']
+    );
 });
