@@ -1,7 +1,3 @@
-
-
-
-
 <div class="flex flex-row px-3 my-6 rounded-xl border-2">
     <div class="flex-none w-1/4 p-3 flex justify-center"> 
         <img src="{{ $step->imageURL() }}" alt="{{ $step->name }}">

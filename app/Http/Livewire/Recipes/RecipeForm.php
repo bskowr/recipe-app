@@ -46,10 +46,8 @@ class RecipeForm extends Component
             'recipe.portions' => [
                 'integer',
                 'gt:0',
-            ], 
-            'recipe.estimated_time' => [
-                'time',
             ],
+            'recipe.estimated_time' => []
         ];
     }
 
@@ -112,6 +110,41 @@ class RecipeForm extends Component
     public function imageChange(){
         $this->imageExists = $this->recipe->imageExists();
         $this->imageURL = $this->recipe->imageURL();
+    }
+
+    public function save(){
+        if($this->editMode){
+            $this->authorize('update', $this->ingredient);
+        } else {
+            $this->authorize('create', Recipe::class);
+        }
+        $this->validate();
+        
+        $recipe = $this->recipe;
+        $image = $this->image;
+        if ($image !== null) {
+            $recipe->image = $recipe->id.'.'.$this->image->getClientOriginalExtension();
+        }
+        $recipe->save();
+        
+        if ($image !== null) {
+            $this->image->storeAs(
+                '',
+                $recipe->image,
+                'public'
+            );
+        }
+
+        $this->notification()->success(
+            $title = $this->editMode ?
+                __('translation.messages.successes.updated_title')
+                : __('translation.messages.successes.stored_title'),
+            $description = $this->editMode ?
+            __('translation.messages.successes.updated', ['name' => $this->recipe->name])
+            : __('translation.messages.successes.stored', ['name' => $this->recipe->name])
+        );
+        $this->editMode = true;
+        $this->imageChange();
     }
 
     public function render()
