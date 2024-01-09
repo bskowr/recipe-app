@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\IngredientCategoryProvider::class,
+        App\Providers\RecipeCategoryProvider::class,
     ])->toArray(),
 
     /*

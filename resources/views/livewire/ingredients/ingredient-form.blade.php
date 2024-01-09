@@ -14,7 +14,7 @@
             </div>
             <div class="">
                 <x-wireui-select placeholder="{{ __('translation.enter') }}" wire:model_defer='ingredient.ingredient_category_id' 
-                    :async_data="route('categories.async')" option-label="name" option-value="id" />
+                    :async_data="route('ingredient_categories.async')" option-label="name" option-value="id" />
             </div>
             <div class="">
                 <label for="name">{{ __('ingredients.attributes.name') }}</label>

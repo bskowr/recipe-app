@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IngredientController;
@@ -29,25 +30,35 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    /* users */
     Route::name('users.')->prefix('users')->group(function () {
         Route::get('', [UserController::class, 'index'])
             ->name('index')
             ->middleware(['permission:users.index']);
     });
-    Route::resource('recipe_categories', RecipeCategoryController::class)->only(
-        [
-            'index', 'create', 'edit'
-        ]
-    );
+    /* ingredients */
     Route::resource('ingredient_categories', IngredientCategoryController::class)->only(
         [
             'index', 'create', 'edit'
         ]
     );
-    Route::get('categories/async', [IngredientCategoryController::class, 'async'])->name('categories.async');
+    Route::get('ingredient_categories/async', [IngredientCategoryController::class, 'async'])->name('ingredient_categories.async');
     Route::resource('ingredients', IngredientController::class)->only(
         [
             'index', 'create', 'edit'
         ]
     );
+
+        /* recipes */
+        Route::resource('recipe_categories', RecipeCategoryController::class)->only(
+            [
+                'index', 'create', 'edit'
+            ]
+        );
+        Route::get('recipe_categories/async', [RecipeCategoryController::class, 'async'])->name('recipe_categories.async');
+        Route::resource('recipes', RecipeController::class)->only(
+            [
+                'index', 'show', 'create', 'edit'
+            ]
+        );
 });

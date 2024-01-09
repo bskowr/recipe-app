@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\RecipeCategoryRepository;
 use App\Models\RecipeCategory;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,13 @@ class RecipeCategoryController extends Controller
             [
                 'recipeCategory' => $recipeCategory,
             ]
+        );
+    }
+
+    public function async(Request $request){
+        return RecipeCategoryRepository::select(
+            $request->search,
+            $request->selected,
         );
     }
 }

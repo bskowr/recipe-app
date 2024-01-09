@@ -20,7 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(RecipeCategorySeeder::class);
         /* seed ingredient categories */
         $this->call(IngredientCategorySeeder::class);
-        /*seed ingredients */
+        /* seed ingredients */
         $this->call(IngredientSeeder::class);
+        /* seed recipes */
+        $this->call(RecipeSeeder::class);
+        $this->call(RecipeStepSeeder::class);
+        $this->call(RecipeIngredientSeeder::class);
     }
 }
