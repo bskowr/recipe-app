@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Recipes\Steps;
 
 
+use App\Models\Ingredient;
 use App\Models\Recipe;
 use Livewire\Component;
 use App\Models\RecipeStep;
 use WireUi\Traits\Actions;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -18,6 +20,7 @@ class RecipeStepForm extends Component
     use WithFileUploads;
     public Recipe $recipe;
     public RecipeStep $step;
+    public $ingredientsIds;
     public $image;
     public $imageURL;
     public bool $imageExists;
@@ -45,7 +48,11 @@ class RecipeStepForm extends Component
                 'image',
             ],
             'step.estimated_time' => [
-                'required'
+                'required',
+            ],
+            'ingredientsIds' => [
+                'required',
+                'array',
             ]
         ];
     }
@@ -57,12 +64,14 @@ class RecipeStepForm extends Component
             'step_number' => __('recipes.steps.attributes.step_number'),
             'image' => __('recipes.steps.attributes.image'),
             'estimated_time' => __('recipes.steps.attributes.estimated_time'),
+            'ingredientsIds' => __('recipes.steps.attributes.ingredients'),
         ];
     }
 
     public function mount(Recipe $recipe, RecipeStep $step, Bool $editMode){
         $this->recipe = $recipe;
         $this->step = $step;
+        $this->ingredientsIds = $step->recipeIngredients->toArray();
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -119,18 +128,23 @@ class RecipeStepForm extends Component
         }
         $this->validate();
         
-        $recipeStep = $this->step;
-        $recipeStep->recipe_id = $this->recipe->id;
+        $step = $this->step;
+        $step->recipe_id = $this->recipe->id;
+        $ingredientsIds = $this->ingredientsIds;
         $image = $this->image;
-        if ($image !== null) {
-            $recipeStep->image = $recipeStep->id.'.'.$this->image->getClientOriginalExtension();
-        }
-        $recipeStep->save();
+        DB::transaction(function () use ($step, $ingredientsIds, $image) {
+            $step->save();
+            if ($image !== null) {
+                $step->image = $step->id.'.'.$this->image->getClientOriginalExtension();
+            }
+            $step->save();
+            // $step->recipeIngredients()->saveMany(Ingredient::whereIn('id', $ingredientsIds)->get());
+        });       
         
         if ($image !== null) {
             $this->image->storeAs(
                 '',
-                $recipeStep->image,
+                $step->image,
                 'public'
             );
         }
@@ -143,7 +157,7 @@ class RecipeStepForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->step->name])
             : __('translation.messages.successes.stored', ['name' => $this->step->name])
         );
-        return redirect()->to('/recipes'.'/'.$recipeStep->recipe->id);
+        return redirect()->to('/recipes'.'/'.$step->recipe->id);
     }
 
     public function render()

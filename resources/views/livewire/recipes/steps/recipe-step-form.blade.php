@@ -37,6 +37,16 @@
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
+                <label for="ingredients">{{ __('recipes.steps.attributes.ingredients') }}</label>
+            </div>
+            <div class="">
+                <x-wireui-select multiselect format="24" wire:model='ingredientsIds' wire:dirty.class="border-yellow"
+                    :async-data="route('ingredients.async')" option-label="name" option-value="id" />
+            </div>
+        </div> 
+        <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+            <div class="">
                 <label for="image">{{ __('recipes.steps.attributes.image') }}</label>
             </div>
             <div class="">
