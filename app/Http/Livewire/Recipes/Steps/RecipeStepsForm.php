@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Recipes;
+namespace App\Http\Livewire\Recipes\Steps;
 
 
 use App\Models\Recipe;

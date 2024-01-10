@@ -64,9 +64,7 @@ Route::middleware([
     );
     Route::resource('recipes.steps', RecipeStepController::class)->only(
         [
-            'create', 'edit'
+            'index', 'create', 'edit'
         ]
-    )->scoped(
-        ['recipe_id' => 'recipes:id']
     );
 });
