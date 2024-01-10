@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    /**
-     * Undocumented function
-     *
-     * @return
-     */
     public function index(){
         $this->authorize('viewAny', Recipe::class);
         return view(
@@ -22,11 +17,6 @@ class RecipeController extends Controller
         );
     }
 
-    /**
-     * Undocumented function
-     *
-     * @return
-     */
     public function create(){
         $this->authorize('create', Recipe::class);
         return view(
@@ -34,12 +24,6 @@ class RecipeController extends Controller
         );
     }
 
-    /**
-     * Undocumented function
-     *
-     * @param Recipe $recipeCategory
-     * @return
-     */
     public function edit(Recipe $recipe){
         $this->authorize('update', $recipe);
         return view(

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Recipes;
 
+use App\Http\Livewire\Recipes\Actions\ViewStepsRecipeAction;
 use App\Models\Recipe;
 use LaravelViews\Facades\UI;
 use LaravelViews\Views\DetailView;
@@ -18,20 +19,18 @@ class RecipeDetailView extends DetailView
     public function detail($model)
     {
         return [
-            UI::component('recipes.details', [
                 'recipe_category' => $model->recipeCategory->name,
                 'name' => $model->name,
                 'description' => $model->description,
-                'image' => $model->imageURL(),
+                'image' => $model->image,
                 'estimated_time' => $model->estimated_time,
                 'portions' => $model->portions
-            ]),
-            UI::component('recipes.ingredients-list', [
-                'recipe_ingredients' => $model->recipeIngredients,
-            ]),
-            UI::component('recipes.steps-list', [
-                'recipe_steps' => $model->recipeSteps
-            ]),
+        ];
+    }
+
+    public function actions(){
+        return [
+            new ViewStepsRecipeAction()
         ];
     }
 }
