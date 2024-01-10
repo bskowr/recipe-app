@@ -27,12 +27,12 @@ class RecipeStepController extends Controller
         );
     }
 
-    public function edit(Recipe $recipe, RecipeStep $recipeStep){
+    public function edit(Recipe $recipe, RecipeStep $step){
         $this->authorize('update', $recipe);
         return view(
             'recipes.steps.form',
             [
-                'recipeStep' => $recipeStep,
+                'step' => $step,
                 'recipe' => $recipe
             ]
         );

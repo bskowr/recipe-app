@@ -10,10 +10,10 @@
             <div class="table-view-wrapper bg-white shadow-xl sm:rounded-lg">
                 @can('create', App\Models\RecipeStep::class)
                     <div class="grid justify-items-strech pr-2 pt-2">
-                        <x-wireui-button primary label="{{ __('recipes.actions.create') }}" href="{{ route('recipes.create') }}" class="justify-self-end" />
+                        <x-wireui-button primary label="{{ __('recipe_steps.actions.create') }}" href="{{ route('recipes.steps.create', ['recipe' => $recipe]) }}" class="justify-self-end" />
                     </div>
                 @endcan
-                {{ $recipeSteps }}
+                <livewire:recipes.steps.recipe-step-table-view :recipe=$recipe />
             </div>
         </div>
     </div>

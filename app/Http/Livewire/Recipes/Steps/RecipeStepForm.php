@@ -11,13 +11,13 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class RecipeStepsForm extends Component
+class RecipeStepForm extends Component
 {
     use Actions;
     use AuthorizesRequests;
     use WithFileUploads;
     public Recipe $recipe;
-    public RecipeStep $recipeStep;
+    public RecipeStep $step;
     public $image;
     public $imageURL;
     public bool $imageExists;
@@ -25,18 +25,18 @@ class RecipeStepsForm extends Component
 
     public function rules(){
         return [
-            'recipeStep.name' => [
+            'step.name' => [
                 'required',
                 'string',
                 'min:2',
                 'max:100',
             ],
-            'recipeStep.description' => [
+            'step.description' => [
                 'nullable',
                 'string',
                 'max:512',
             ],
-            'recipeStep.step_number' => [
+            'step.step_number' => [
                 'required',
                 'integer'
             ],
@@ -44,7 +44,9 @@ class RecipeStepsForm extends Component
                 'nullable',
                 'image',
             ],
-            'recipeStep.estimated_time' => []
+            'step.estimated_time' => [
+                'required'
+            ]
         ];
     }
 
@@ -58,9 +60,9 @@ class RecipeStepsForm extends Component
         ];
     }
 
-    public function mount(Recipe $recipe, RecipeStep $recipeStep, Bool $editMode){
+    public function mount(Recipe $recipe, RecipeStep $step, Bool $editMode){
         $this->recipe = $recipe;
-        $this->recipeStep = $recipeStep;
+        $this->step = $step;
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -73,7 +75,7 @@ class RecipeStepsForm extends Component
         $this->dialog()->confirm([
             'title' => __('recipes.dialogs.image_delete.title'),
             'description' => __('recipes.dialogs.image_delete.description', [
-                'name' => $this->recipeStep->name,
+                'name' => $this->step->name,
             ]),
             'icon' => 'question',
             'iconColor' => 'text-red-500',
@@ -88,13 +90,13 @@ class RecipeStepsForm extends Component
     }
 
     public function deleteImage(){
-        if (Storage::disk('public')->delete($this->recipeStep->image)) {
-            $this->recipeStep->image = null;
-            $this->recipeStep->save();
+        if (Storage::disk('public')->delete($this->step->image)) {
+            $this->step->image = null;
+            $this->step->save();
             $this->imageChange();
             $this->notification()->success(
                 $title = __('recipes.messages.successes.image_deleted.title'),
-                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->recipeStep->name]),
+                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->step->name]),
             );
             return;
         }
@@ -105,8 +107,8 @@ class RecipeStepsForm extends Component
     }
 
     public function imageChange(){
-        $this->imageExists = $this->recipeStep->imageExists();
-        $this->imageURL = $this->recipeStep->imageURL();
+        $this->imageExists = $this->step->imageExists();
+        $this->imageURL = $this->step->imageURL();
     }
 
     public function save(){
@@ -117,7 +119,7 @@ class RecipeStepsForm extends Component
         }
         $this->validate();
         
-        $recipeStep = $this->recipeStep;
+        $recipeStep = $this->step;
         $recipeStep->recipe_id = $this->recipe->id;
         $image = $this->image;
         if ($image !== null) {
@@ -138,14 +140,14 @@ class RecipeStepsForm extends Component
                 __('translation.messages.successes.updated_title')
                 : __('translation.messages.successes.stored_title'),
             $description = $this->editMode ?
-            __('translation.messages.successes.updated', ['name' => $this->recipeStep->name])
-            : __('translation.messages.successes.stored', ['name' => $this->recipeStep->name])
+            __('translation.messages.successes.updated', ['name' => $this->step->name])
+            : __('translation.messages.successes.stored', ['name' => $this->step->name])
         );
         return redirect()->to('/recipes'.'/'.$recipeStep->recipe->id);
     }
 
     public function render()
     {
-        return view('livewire.recipes.recipe-steps-form');
+        return view('livewire.recipes.steps.recipe-step-form');
     }
 }

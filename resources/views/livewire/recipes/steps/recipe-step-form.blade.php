@@ -13,25 +13,25 @@
                 <label for="step_number">{{ __('recipes.steps.attributes.step_number') }}</label>
             </div>
             <div class="">
-                <x-wireui-inputs.number placeholder="1" wire:model='recipeStep.step_number' />
+                <x-wireui-inputs.number placeholder="1" wire:model='step.step_number' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
                 <label for="name">{{ __('recipes.steps.attributes.name') }}</label>
             </div>
             <div class="">
-                <x-wireui-input placeholder="{{ __('translation.enter') }}" wire:model='recipeStep.name' />
+                <x-wireui-input placeholder="{{ __('translation.enter') }}" wire:model='step.name' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
                 <label for="description">{{ __('recipes.steps.attributes.description') }}</label>
             </div>
             <div class="">
-                <x-wireui-textarea placeholder="{{ __('translation.enter') }}" wire:model='recipeStep.description' />
+                <x-wireui-textarea placeholder="{{ __('translation.enter') }}" wire:model='step.description' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
                 <label for="estimated_time">{{ __('recipes.steps.attributes.estimated_time') }}</label>
             </div>
             <div class="">
-                <x-wireui-time-picker placeholder="00:00" format="24" wire:model='recipeStep.estimated_time' />
+                <x-wireui-time-picker placeholder="00:00" format="24" wire:model='step.estimated_time' wire:dirty.class="border-yellow" />
             </div>
         </div> 
         <hr class="my-2">
@@ -42,7 +42,7 @@
             <div class="">
                 @if ($imageExists)
                     <div class="relative">
-                        <img class="w-full" src="{{ $imageURL }}" alt="{{ $recipeStep->name }}">
+                        <img class="w-full" src="{{ $imageURL }}" alt="{{ $step->name }}">
                         <div class="absolute right-2 top-2 h-16">
                             <x-wireui-button.circle outline xs secondary icon="trash" wire:click="confirmDeleteImage" />
                         </div>

@@ -23,7 +23,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('ingredients')
                 ->onDelete('no action');
-            $table->decimal('amount_used', 8, 2, true);
+            $table->decimal('amount_used', 8, 2, true)->nullable();
             $table->timestamps();
         });
     }

@@ -8,10 +8,10 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                @if (isset($recipeStep))
-                    <livewire:recipes.recipe-steps-form :recipe="$recipe" :recipeStep="$recipeStep" :editMode="true" />
+                @if (!empty($step))
+                    <livewire:recipes.steps.recipe-step-form :recipe="$recipe" :step="$step" :editMode="true" />
                 @else
-                    <livewire:recipes.recipe-steps-form :recipe="$recipe" :editMode="false" />
+                    <livewire:recipes.steps.recipe-step-form :recipe="$recipe" :editMode="false" />
                 @endif
             </div>
         </div>

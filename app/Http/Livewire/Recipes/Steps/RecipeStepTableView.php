@@ -16,7 +16,6 @@ class RecipeStepTableView extends TableView
     use Actions;
 
     protected $model = RecipeStep::class;
-    protected $view = 'recipe_steps.table-view';
     public $recipe = '';
     public $searchBy = [
         'name',
@@ -42,7 +41,8 @@ class RecipeStepTableView extends TableView
         return [
             new EditRecipeStepAction(
                 'recipes.steps.edit',
-                __('recipe_steps.actions.edit')
+                __('recipe_steps.actions.edit'),
+                $this->recipe,
             ),
             new DeleteRecipeStepAction(),
         ];

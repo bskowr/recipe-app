@@ -30,7 +30,10 @@ class RecipeDetailView extends DetailView
 
     public function actions(){
         return [
-            new ViewStepsRecipeAction()
+            new ViewStepsRecipeAction(
+                'recipes.steps.index',
+                __('recipes.steps.index'),
+            )
         ];
     }
 }
