@@ -6,16 +6,17 @@ use App\Models\Recipe;
 use App\Models\RecipeStep;
 use WireUi\Traits\Actions;
 use LaravelViews\Facades\Header;
-use LaravelViews\Views\TableView;
+use LaravelViews\Views\ListView;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\Recipes\Steps\Actions\EditRecipeStepAction;
 use App\Http\Livewire\Recipes\Steps\Actions\DeleteRecipeStepAction;
 
-class RecipeStepTableView extends TableView
+class RecipeStepListView extends ListView
 {
     use Actions;
 
     protected $model = RecipeStep::class;
+    public $itemComponent = 'recipes.steps.list-view-item';
     public $recipe = '';
     public $searchBy = [
         'name',
@@ -34,6 +35,7 @@ class RecipeStepTableView extends TableView
             Header::title(__('recipes.steps.attributes.description'))->sortBy('description'),
             Header::title(__('recipes.steps.attributes.step_number'))->sortBy('step_number'),
             Header::title(__('recipes.steps.attributes.estimated_time'))->sortBy('estimated_time'),
+            Header::title(__('recipes.steps.attributes.ingredients'))
         ];
     }
 
@@ -47,15 +49,18 @@ class RecipeStepTableView extends TableView
             new DeleteRecipeStepAction(),
         ];
     }
-    public function row($model): array
+
+    public function data($model)
     {
         return [
-            $model->name,
-            $model->description,
-            $model->step_number,
-            $model->estimated_time
+            'step_name' => $model->name,
+            'step_description' => $model->description,
+            'step_step_number' => $model->step_number,
+            'step_estimated_time' => $model->estimated_time,
+            'ingredients' => $model->ingredients,
         ];
     }
+
 
     public function delete($id){
         RecipeStep::find($id)->delete();

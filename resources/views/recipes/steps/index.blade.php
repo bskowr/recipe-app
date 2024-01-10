@@ -13,7 +13,7 @@
                         <x-wireui-button primary label="{{ __('recipe_steps.actions.create') }}" href="{{ route('recipes.steps.create', ['recipe' => $recipe]) }}" class="justify-self-end" />
                     </div>
                 @endcan
-                <livewire:recipes.steps.recipe-step-table-view :recipe=$recipe />
+                <livewire:recipes.steps.recipe-step-list-view :recipe=$recipe />
             </div>
         </div>
     </div>
