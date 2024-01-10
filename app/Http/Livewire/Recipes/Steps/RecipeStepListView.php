@@ -18,11 +18,7 @@ class RecipeStepListView extends ListView
     protected $model = RecipeStep::class;
     public $itemComponent = 'recipes.steps.list-view-item';
     public $recipe = '';
-    public $searchBy = [
-        'name',
-        'description',
-        'step_number'
-    ];
+    public $searchBy = [];
     protected $paginate = 25;
     public function repository(): Builder
     {
@@ -53,11 +49,8 @@ class RecipeStepListView extends ListView
     public function data($model)
     {
         return [
-            'step_name' => $model->name,
-            'step_description' => $model->description,
-            'step_step_number' => $model->step_number,
-            'step_estimated_time' => $model->estimated_time,
-            'ingredients' => $model->ingredients,
+            'step' => $model,
+            'actions' => $this->getActions()
         ];
     }
 
