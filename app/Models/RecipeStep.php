@@ -24,8 +24,8 @@ class RecipeStep extends Model
         return $this->belongsTo(Recipe::class);
     }
 
-    public function recipeIngredients(){
-        return $this->hasMany(RecipeIngredient::class);
+    public function ingredients(){
+        return $this->belongsToMany(Ingredient::class);
     }
 
     protected function image(): Attribute

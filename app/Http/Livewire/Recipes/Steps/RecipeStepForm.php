@@ -71,7 +71,7 @@ class RecipeStepForm extends Component
     public function mount(Recipe $recipe, RecipeStep $step, Bool $editMode){
         $this->recipe = $recipe;
         $this->step = $step;
-        $this->ingredientsIds = $step->recipeIngredients->toArray();
+        $this->ingredientsIds = $step->ingredients->toArray();
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -138,7 +138,7 @@ class RecipeStepForm extends Component
                 $step->image = $step->id.'.'.$this->image->getClientOriginalExtension();
             }
             $step->save();
-            // $step->recipeIngredients()->saveMany(Ingredient::whereIn('id', $ingredientsIds)->get());
+            $step->ingredients()->sync($ingredientsIds);
         });       
         
         if ($image !== null) {
