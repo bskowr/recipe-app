@@ -71,7 +71,7 @@ class RecipeStepForm extends Component
     public function mount(Recipe $recipe, RecipeStep $step, Bool $editMode){
         $this->recipe = $recipe;
         $this->step = $step;
-        $this->ingredientsIds = $step->ingredients;
+        $this->ingredientsIds = $step->ingredients->pluck('id');
         $this->imageChange();
         $this->editMode = $editMode;
     }
