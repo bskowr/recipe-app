@@ -59,19 +59,19 @@ class RecipeStepForm extends Component
 
     public function validationAttributes(){
         return [
-            'name' => __('recipes.steps.attributes.name'),
-            'description' => __('recipes.steps.attributes.description'),
-            'step_number' => __('recipes.steps.attributes.step_number'),
-            'image' => __('recipes.steps.attributes.image'),
-            'estimated_time' => __('recipes.steps.attributes.estimated_time'),
-            'ingredientsIds' => __('recipes.steps.attributes.ingredients'),
+            'name' => __('recipe_steps.attributes.name'),
+            'description' => __('recipe_steps.attributes.description'),
+            'step_number' => __('recipe_steps.attributes.step_number'),
+            'image' => __('recipe_steps.attributes.image'),
+            'estimated_time' => __('recipe_steps.attributes.estimated_time'),
+            'ingredientsIds' => __('recipe_steps.attributes.ingredients'),
         ];
     }
 
     public function mount(Recipe $recipe, RecipeStep $step, Bool $editMode){
         $this->recipe = $recipe;
         $this->step = $step;
-        $this->ingredientsIds = $step->ingredients->toArray();
+        $this->ingredientsIds = $step->ingredients;
         $this->imageChange();
         $this->editMode = $editMode;
     }
@@ -82,8 +82,8 @@ class RecipeStepForm extends Component
 
     public function confirmDeleteImage(){
         $this->dialog()->confirm([
-            'title' => __('recipes.dialogs.image_delete.title'),
-            'description' => __('recipes.dialogs.image_delete.description', [
+            'title' => __('recipe_steps.dialogs.image_delete.title'),
+            'description' => __('recipe_steps.dialogs.image_delete.description', [
                 'name' => $this->step->name,
             ]),
             'icon' => 'question',
@@ -104,14 +104,14 @@ class RecipeStepForm extends Component
             $this->step->save();
             $this->imageChange();
             $this->notification()->success(
-                $title = __('recipes.messages.successes.image_deleted.title'),
-                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->step->name]),
+                $title = __('recipe_steps.messages.successes.image_deleted.title'),
+                $description = __('recipe_steps.messages.successes.image_deleted.description', ['name' => $this->step->name]),
             );
             return;
         }
         $this->notification()->error(
-            $title = __('recipes.messages.errors.image_deleted.title'),
-            $description = __('recipes.messages.errors.image_deleted.$description')
+            $title = __('recipe_steps.messages.errors.image_deleted.title'),
+            $description = __('recipe_steps.messages.errors.image_deleted.$description')
         );
     }
 
@@ -154,10 +154,10 @@ class RecipeStepForm extends Component
                 __('translation.messages.successes.updated_title')
                 : __('translation.messages.successes.stored_title'),
             $description = $this->editMode ?
-            __('translation.messages.successes.updated', ['name' => $this->step->name])
-            : __('translation.messages.successes.stored', ['name' => $this->step->name])
+                __('translation.messages.successes.updated', ['name' => $this->step->name])
+                : __('translation.messages.successes.stored', ['name' => $this->step->name])
         );
-        return redirect()->to('/recipes'.'/'.$step->recipe->id);
+        return redirect()->to('/recipes'.'/'.$step->recipe->id . '/steps');
     }
 
     public function render()

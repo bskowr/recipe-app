@@ -97,13 +97,13 @@ class RecipeForm extends Component
             $this->imageChange();
             $this->notification()->success(
                 $title = __('recipes.messages.successes.image_deleted.title'),
-                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->recipe->name]),
+                $description = __('recipes.messages.successes.image_deleted.description', ['name' => $this->recipe->name]),
             );
             return;
         }
         $this->notification()->error(
             $title = __('recipes.messages.errors.image_deleted.title'),
-            $description = __('recipes.messages.errors.image_deleted.$description')
+            $description = __('recipes.messages.errors.image_deleted.description')
         );
     }
 

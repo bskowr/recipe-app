@@ -22,17 +22,7 @@ class RecipeStepListView extends ListView
     protected $paginate = 25;
     public function repository(): Builder
     {
-        return RecipeStep::query()->where('recipe_id','=',$this->recipe->id);
-    }
-    public function headers(): array
-    {
-        return [
-            Header::title(__('recipes.steps.attributes.name'))->sortBy('name'),
-            Header::title(__('recipes.steps.attributes.description'))->sortBy('description'),
-            Header::title(__('recipes.steps.attributes.step_number'))->sortBy('step_number'),
-            Header::title(__('recipes.steps.attributes.estimated_time'))->sortBy('estimated_time'),
-            Header::title(__('recipes.steps.attributes.ingredients'))
-        ];
+        return RecipeStep::query()->where('recipe_id','=',$this->recipe->id)->orderBy('step_number');
     }
 
     public function actionsByRow(){
@@ -53,7 +43,6 @@ class RecipeStepListView extends ListView
             'actions' => $this->getActions()
         ];
     }
-
 
     public function delete($id){
         RecipeStep::find($id)->delete();

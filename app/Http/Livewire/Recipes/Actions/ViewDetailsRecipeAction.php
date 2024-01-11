@@ -11,7 +11,7 @@ class ViewDetailsRecipeAction extends RedirectAction
     public function __construct(
         string $to,
         string $title,
-        string $icon = "details"
+        string $icon = "search"
     )
     {
         parent::__construct($to, $title, $icon);

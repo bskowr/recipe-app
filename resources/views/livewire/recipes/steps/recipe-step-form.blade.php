@@ -2,33 +2,33 @@
     <form wire:submit.prevent="save">
         <h1 class="font-semibold text-xl text-gray-800 leading-tight">
             @if ($editMode)
-                {{ __('recipes.steps.labels.edit_form_title') }}
+                {{ __('recipe_steps.labels.edit_form_title') }}
             @else
-                {{ __('recipes.steps.labels.create_form_title') }}
+                {{ __('recipe_steps.labels.create_form_title') }}
             @endif
         </h1>
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
-                <label for="step_number">{{ __('recipes.steps.attributes.step_number') }}</label>
+                <label for="step_number">{{ __('recipe_steps.attributes.step_number') }}</label>
             </div>
             <div class="">
                 <x-wireui-inputs.number placeholder="1" wire:model='step.step_number' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
-                <label for="name">{{ __('recipes.steps.attributes.name') }}</label>
+                <label for="name">{{ __('recipe_steps.attributes.name') }}</label>
             </div>
             <div class="">
                 <x-wireui-input placeholder="{{ __('translation.enter') }}" wire:model='step.name' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
-                <label for="description">{{ __('recipes.steps.attributes.description') }}</label>
+                <label for="description">{{ __('recipe_steps.attributes.description') }}</label>
             </div>
             <div class="">
                 <x-wireui-textarea placeholder="{{ __('translation.enter') }}" wire:model='step.description' wire:dirty.class="border-yellow" />
             </div>
             <div class="">
-                <label for="estimated_time">{{ __('recipes.steps.attributes.estimated_time') }}</label>
+                <label for="estimated_time">{{ __('recipe_steps.attributes.estimated_time') }}</label>
             </div>
             <div class="">
                 <x-wireui-time-picker placeholder="00:00" format="24" wire:model='step.estimated_time' wire:dirty.class="border-yellow" />
@@ -37,7 +37,7 @@
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
-                <label for="ingredients">{{ __('recipes.steps.attributes.ingredients') }}</label>
+                <label for="ingredients">{{ __('recipe_steps.attributes.ingredients') }}</label>
             </div>
             <div class="">
                 <x-wireui-select multiselect format="24" wire:model='ingredientsIds' wire:dirty.class="border-yellow"
@@ -47,7 +47,7 @@
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
-                <label for="image">{{ __('recipes.steps.attributes.image') }}</label>
+                <label for="image">{{ __('recipe_steps.attributes.image') }}</label>
             </div>
             <div class="">
                 @if ($imageExists)
