@@ -56,7 +56,7 @@ class RecipeCategoryForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->recipeCategory->name])
             : __('translation.messages.successes.stored', ['name' => $this->recipeCategory->name])
         );
-        $this->editMode = true;
+        return redirect()->to('/recipe_categories');
     }
 
     public function render()

@@ -143,8 +143,7 @@ class RecipeForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->recipe->name])
             : __('translation.messages.successes.stored', ['name' => $this->recipe->name])
         );
-        $this->editMode = true;
-        $this->imageChange();
+        return redirect()->to('/recipes');
     }
 
     public function render()

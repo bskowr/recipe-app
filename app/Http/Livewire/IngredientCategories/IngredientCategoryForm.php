@@ -56,7 +56,7 @@ class IngredientCategoryForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->ingredientCategory->name])
             : __('translation.messages.successes.stored', ['name' => $this->ingredientCategory->name])
         );
-        $this->editMode = true;
+        return redirect()->to('/ingredient_categories');
     }
 
     public function render()
