@@ -97,13 +97,13 @@ class RecipeForm extends Component
             $this->imageChange();
             $this->notification()->success(
                 $title = __('recipes.messages.successes.image_deleted.title'),
-                $description = __('recipes.messages.successes.image_deleted.$description', ['name' => $this->recipe->name]),
+                $description = __('recipes.messages.successes.image_deleted.description', ['name' => $this->recipe->name]),
             );
             return;
         }
         $this->notification()->error(
             $title = __('recipes.messages.errors.image_deleted.title'),
-            $description = __('recipes.messages.errors.image_deleted.$description')
+            $description = __('recipes.messages.errors.image_deleted.description')
         );
     }
 
@@ -143,8 +143,7 @@ class RecipeForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->recipe->name])
             : __('translation.messages.successes.stored', ['name' => $this->recipe->name])
         );
-        $this->editMode = true;
-        $this->imageChange();
+        return redirect()->to('/recipes');
     }
 
     public function render()

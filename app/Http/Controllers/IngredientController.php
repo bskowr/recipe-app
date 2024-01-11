@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
+use App\Facades\IngredientRepository;
 
 class IngredientController extends Controller
 {
@@ -47,6 +48,13 @@ class IngredientController extends Controller
             [
                 'ingredient' => $ingredient,
             ]
+        );
+    }
+    
+    public function async(Request $request){
+        return IngredientRepository::select(
+            $request->search,
+            $request->selected,
         );
     }
 }

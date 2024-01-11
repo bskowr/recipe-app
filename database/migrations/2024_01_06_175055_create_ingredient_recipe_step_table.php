@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recipe_ingredients', function (Blueprint $table) {
+        Schema::create('ingredient_recipe_step', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('recipe_step_id');
             $table->foreign('recipe_step_id')
@@ -23,8 +23,6 @@ return new class extends Migration
                 ->references('id')
                 ->on('ingredients')
                 ->onDelete('no action');
-            $table->decimal('amount_used', 8, 2, true);
-            $table->timestamps();
         });
     }
 

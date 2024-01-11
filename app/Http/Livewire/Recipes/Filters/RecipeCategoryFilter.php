@@ -14,8 +14,8 @@ class RecipeCategoryFilter extends Filter
     }
 
     public function apply(Builder $query, $value, $request): Builder {
-        return $query->whereHas('recipe_categories', function ($query) use ($value){
-            $query->where('name', 'like', '%'.$value.'%');
+        return $query->whereHas('recipeCategory', function ($query) use ($value){
+            $query->where('id', '=', $value);
         });
     }
 

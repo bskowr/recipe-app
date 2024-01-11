@@ -24,7 +24,7 @@ class RecipeStepFactory extends Factory
             'name' => $this->faker->word(100),
             'description' => rand(0, 10) === 0 ? null : $this->faker->text(512),
             'estimated_time' => $this->faker->time(),
-            'step_number' => DB::table('recipe_steps')->where('recipe_id', 'eq', $recipe_id)->count('id') + 1,
+            'step_number' => DB::table('recipe_steps')->where('recipe_id', '=', $recipe_id)->count('id') + 1,
             'recipe_id' => $recipe_id,
         ];
     }

@@ -2,8 +2,6 @@
 
 return [
     'show' => 'Informacje o przepisie',
-    'steps' => 'Kroki przepisu',
-    'ingredients' => 'Składniki w przepisie',
     'messages' => [
         'successes' => [
             'soft_delete' => [

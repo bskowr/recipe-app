@@ -14,8 +14,8 @@ class IngredientCategoryFilter extends Filter
     }
 
     public function apply(Builder $query, $value, $request): Builder {
-        return $query->whereHas('ingredient_categories', function ($query) use ($value){
-            $query->where('name', 'like', '%'.$value.'%');
+        return $query->whereHas('ingredientCategory', function ($query) use ($value){
+            $query->where('id', '=', $value);
         });
     }
 

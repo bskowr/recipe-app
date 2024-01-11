@@ -49,6 +49,7 @@ Route::middleware([
             'index', 'create', 'edit'
         ]
     );
+    Route::get('ingredients/async', [IngredientController::class, 'async'])->name('ingredients.async');
 
     /* recipes */
     Route::resource('recipe_categories', RecipeCategoryController::class)->only(

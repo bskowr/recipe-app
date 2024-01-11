@@ -11,10 +11,6 @@
             <h2 class="w-1/2 text-2xl text-left">
                 {{ $ingredient->name }}
             </h2>
-            <div class="w-1/2 text-xl flex flex-row justify-end items-center">
-                {{ $amount_used }} {{ $ingredient->unit }}
-                <x-dynamic-component component="wireui::icons.outline.scale" class="px-3 w-1/12"/>
-            </div>
         </div>
         <p class="max-w-prose text-xs">
             {{ $ingredient->description }}

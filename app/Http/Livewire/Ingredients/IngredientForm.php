@@ -112,8 +112,7 @@ class IngredientForm extends Component
             __('translation.messages.successes.updated', ['name' => $this->ingredient->name])
             : __('translation.messages.successes.stored', ['name' => $this->ingredient->name])
         );
-        $this->editMode = true;
-        $this->imageChange();
+        return redirect()->to('/ingredients');
     }
 
     public function confirmDeleteImage(){

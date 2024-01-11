@@ -23,6 +23,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                myprimary: '#110000',
+            }
         },
     },
     plugins: [forms, typography],

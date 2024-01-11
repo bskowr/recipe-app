@@ -172,6 +172,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\IngredientCategoryProvider::class,
         App\Providers\RecipeCategoryProvider::class,
+        App\Providers\IngredientProvider::class,
     ])->toArray(),
 
     /*
@@ -187,6 +188,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'IngredientCategoryRepository' => App\Facades\IngredientCategoryRepository::class,
+        'IngredientRepository' => App\Facades\IngredientRepository::class,
+        'RecipeCategoryRepository' => App\Facades\RecipeCategoryRepository::class,
     ])->toArray(),
 
 ];

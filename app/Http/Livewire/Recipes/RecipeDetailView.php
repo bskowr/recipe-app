@@ -19,18 +19,21 @@ class RecipeDetailView extends DetailView
     public function detail($model)
     {
         return [
-                'recipe_category' => $model->recipeCategory->name,
-                'name' => $model->name,
-                'description' => $model->description,
-                'image' => $model->image,
-                'estimated_time' => $model->estimated_time,
-                'portions' => $model->portions
+                __('recipes.attributes.recipe_category_id') => $model->recipeCategory->name,
+                __('recipes.attributes.name') => $model->name,
+                __('recipes.attributes.description') => $model->description,
+                __('recipes.attributes.image') => $model->image,
+                __('recipes.attributes.estimated_time') => $model->estimated_time,
+                __('recipes.attributes.portions') => $model->portions
         ];
     }
 
     public function actions(){
         return [
-            new ViewStepsRecipeAction()
+            new ViewStepsRecipeAction(
+                'recipes.steps.index',
+                __('recipes.steps.index'),
+            )
         ];
     }
 }
