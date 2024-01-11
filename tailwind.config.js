@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import colors from 'tailwindcss/colors.js';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -22,6 +23,9 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                myprimary: '#110000',
+            }
         },
     },
     plugins: [forms, typography],

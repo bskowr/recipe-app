@@ -20,6 +20,10 @@ class Ingredient extends Model
         return $this->belongsTo(IngredientCategory::class);
     }
 
+    public function recipeSteps(){
+        return $this->belongsToMany(RecipeStep::class);
+    }
+
     protected function image(): Attribute {
         return Attribute::make(
             get: function ($value) {

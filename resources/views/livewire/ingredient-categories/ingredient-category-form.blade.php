@@ -18,8 +18,8 @@
         </div>
         <hr class="my-2">
         <div class="flex justify-end pt-2">
-            <x-button href="{{ route('ingredient_categories.index') }}" secondary class="mr-2" label="{{ __('translation.back') }}" />
-            <x-button type="submit" primary label="{{ __('translation.save') }}" spinner />
+            <x-wireui-button href="{{ route('ingredient_categories.index') }}" secondary class="mr-2" label="{{ __('translation.back') }}" />
+            <x-wireui-button type="submit" primary label="{{ __('translation.save') }}" spinner />
         </div>
     </form>
 </div>
