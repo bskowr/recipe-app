@@ -64,7 +64,7 @@
         </div> 
         <hr class="my-2">
         <div class="flex justify-end pt-2">
-            <x-wireui-button href="{{ route('recipes.index') }}" secondary class="mr-2" label="{{ __('translation.back') }}" />
+            <x-wireui-button href="{{ route('recipes.steps.index', ['recipe' => $recipe]) }}" secondary class="mr-2" label="{{ __('translation.back') }}" />
             <x-wireui-button type="submit" primary label="{{ __('translation.save') }}" spinner />
         </div>
     </form>

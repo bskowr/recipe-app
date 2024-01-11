@@ -51,4 +51,7 @@ return [
         'owned_amount' => 'Posiadana ilość składnika',
         'unit' => 'Jednostka składnika',
     ],
+    'filters' => [
+        'category' => 'Kategorie przepisów',
+    ],
 ];

@@ -39,7 +39,7 @@ return [
     'actions' => [
         'create' => "Dodaj krok",
         'edit' => 'Edytuj krok',
-        'soft_delete' => 'Usuń krok',
+        'delete' => 'Usuń krok',
     ],
     'attributes' => [
         'name' => 'Nazwa kroku',

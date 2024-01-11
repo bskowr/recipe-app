@@ -17,6 +17,10 @@ return [
     ],
     'messages' => [
         'successes' => [
+            'soft_delete' => [
+                'title' => 'Archiwizowano',
+                'description' => 'Archiwizowano :name'
+            ],
             'updated_title' => 'Zaktualizowano',
             'updated' => 'Zaktualizowano :name',
             'stored_title' => 'Zapisano',
@@ -35,5 +39,6 @@ return [
         'ingredient_categories' => 'Kategorie składników',
         'ingredients' => 'Składniki',
         'recipes' => 'Przepisy',
+        'recipe_steps' => 'Kroki przepisu',
     ],
 ];

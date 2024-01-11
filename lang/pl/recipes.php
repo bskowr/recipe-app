@@ -53,4 +53,7 @@ return [
         'portions' => 'Przygotowywane porcje',
         'image' => 'Zdjęcie tytułowe przepisu',
     ],
+    'filters' => [
+        'category' => 'Kategoria przepisu',
+    ],
 ];

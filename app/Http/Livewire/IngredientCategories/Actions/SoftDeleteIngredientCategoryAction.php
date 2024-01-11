@@ -13,13 +13,13 @@ class SoftDeleteIngredientCategoryAction extends SoftDeleteAction
     }
     protected function dialogTitle(): String
     {
-        return __('ingredient_category.dialogs.soft_delete.title');
+        return __('ingredient_categories.dialogs.soft_delete.title');
     }
 
     protected function dialogDescription(Model $model): String
     {
-        return __('ingredient_category.dialogs.soft_delete.description', [
-            'name' => $model
+        return __('ingredient_categories.dialogs.soft_delete.description', [
+            'name' => $model->name
         ]);
     }
 }
